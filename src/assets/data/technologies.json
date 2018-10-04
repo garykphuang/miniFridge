@@ -1,0 +1,24 @@
+{
+   "technologies" : [
+      {
+         "Item" : "Eggs",
+         "expiration" : "September 15",
+         "location" : "Top Shelf"
+      },
+      {
+         "Item" : "Ham",
+         "expiration" : "September 23",
+         "location" : "Bottom Shelf"
+      },
+      {
+         "Item" : "Milk",
+         "expiration" : "September 10",
+         "location" : "Fridge Door"
+      },
+      {
+         "Item" : "Chocolate",
+         "expiration" : "October 23",
+         "location" : "Middle Shelf"
+      }
+   ]
+}
