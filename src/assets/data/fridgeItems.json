@@ -1,5 +1,5 @@
 {
-   "technologies" : [
+   "fridgeItems" : [
       {
          "Item" : "Eggs",
          "expiration" : "September 15",

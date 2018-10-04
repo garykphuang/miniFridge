@@ -1,0 +1,24 @@
+{
+   "shoppingList" : [
+      {
+         "Item" : "Eggs",
+         "category" : "Dairy",
+         "quantity" : "12 eggs"
+      },
+      {
+         "Item" : "Chicken",
+         "category" : "Protein",
+         "quantity" : "2 lb"
+      },
+      {
+         "Item" : "Oranges",
+         "category" : "Fruit",
+         "quantity" : "4 oranges"
+      },
+      {
+         "Item" : "Onion",
+         "category" : "Vegetable",
+         "quantity" : "12 onions"
+      }
+   ]
+}
