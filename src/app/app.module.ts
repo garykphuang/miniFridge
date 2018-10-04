@@ -6,6 +6,7 @@ import { MyApp } from './app.component';
 
 import { ShoppingList } from '../pages/shopping_list/shopping_list';
 import { HomePage } from '../pages/home/home';
+import { Fridge } from '../pages/fridge/fridge';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -17,6 +18,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     MyApp,
     ShoppingList,
     HomePage,
+    Fridge,
     TabsPage
   ],
   imports: [
@@ -30,6 +32,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     MyApp,
     ShoppingList,
     HomePage,
+    Fridge,
     TabsPage
   ],
   providers: [

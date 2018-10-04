@@ -4,15 +4,15 @@ import { NavController } from 'ionic-angular';
 
 
 export interface Config {
-	shoppingList: string;
+	fridgeItems: string;
 }
 
 
 @Component({
-  selector: 'page-shoppinglist',
-  templateUrl: 'shopping_list.html'
+  selector: 'page-fridge',
+  templateUrl: 'fridge.html'
 })
-export class ShoppingList {
+export class Fridge {
 
 
 
@@ -57,8 +57,8 @@ export class ShoppingList {
       // (based off the names of the keys in the JSON file)
       this.columns = [
         { prop: 'Item' },
-        { name: 'Category' },
-        { name: 'Quantity' }
+        { name: 'Expiration' },
+        { name: 'Location' }
       ];
    }
 
@@ -78,10 +78,10 @@ export class ShoppingList {
    ionViewDidLoad() : void
    {
       this._HTTP
-      .get<Config>('../../assets/data/shoppingList.json')
+      .get<Config>('../../assets/data/fridgeItems.json')
       .subscribe((data) =>
       {
-         this.rows = data.shoppingList;
+         this.rows = data.fridgeItems;
       });
 
    }
