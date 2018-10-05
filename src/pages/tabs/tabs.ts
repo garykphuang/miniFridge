@@ -10,8 +10,8 @@ import { Fridge } from '../fridge/fridge';
 export class TabsPage {
 
   tab1Root = HomePage;
-  tab2Root = ShoppingList;
-  tab3Root = Fridge
+  tab2Root = Fridge;
+  tab3Root = ShoppingList;
 
   constructor() {
 
