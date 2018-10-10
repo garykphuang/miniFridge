@@ -2,11 +2,9 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NavController } from 'ionic-angular';
 
-
 export interface Config {
 	shoppingList: string;
 }
-
 
 @Component({
   selector: 'page-shoppinglist',
