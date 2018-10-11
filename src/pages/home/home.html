@@ -1,14 +1,29 @@
-
 <ion-header>
-  <ion-toolbar>
+  <ion-navbar>
     <ion-title>
-      Home Page
+      Firestore Form
     </ion-title>
-  </ion-toolbar>
+  </ion-navbar>
 </ion-header>
 
-<ion-list>
-
 <ion-content padding>
+  <form [formGroup]="simple_form" >
+      <ion-item>
+        <ion-label floating >Item</ion-label>
+        <ion-input type="text" formControlName="item" class="form-controll" required></ion-input>
+      </ion-item>
 
+      <ion-item>
+        <ion-label floating >Expiration</ion-label>
+        <ion-input type="text" formControlName="expiration" class="form-controll" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating >Location</ion-label>
+        <ion-input type="text" formControlName="location" class="form-controll" required></ion-input>
+      </ion-item>
+
+
+    </form>
+    <button ion-button full [disabled]="!simple_form.valid" (click)="add(simple_form.value)" type="submit">Add</button>
 </ion-content>

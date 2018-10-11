@@ -13,6 +13,12 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
+import { FirebaseService } from '../services/firebase.service';
+
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { environment } from '../environment/environment';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -25,7 +31,9 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     BrowserModule,
     HttpClientModule,
     NgxDatatableModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -38,6 +46,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
   providers: [
     StatusBar,
     SplashScreen,
+    FirebaseService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
