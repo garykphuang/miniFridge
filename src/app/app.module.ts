@@ -8,6 +8,7 @@ import { ShoppingList } from '../pages/shopping_list/shopping_list';
 import { HomePage } from '../pages/home/home';
 import { Fridge } from '../pages/fridge/fridge';
 import { TabsPage } from '../pages/tabs/tabs';
+import { AddPage2Page } from '../pages/add-page2/add-page2';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -25,7 +26,8 @@ import { environment } from '../environment/environment';
     ShoppingList,
     HomePage,
     Fridge,
-    TabsPage
+    TabsPage,
+    AddPage2Page
   ],
   imports: [
     BrowserModule,

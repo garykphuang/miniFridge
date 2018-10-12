@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NavController } from 'ionic-angular';
 
+import { HomePage } from '../home/home';
+
 export interface Config {
 	shoppingList: string;
 }
@@ -12,9 +14,6 @@ export interface Config {
 })
 export class ShoppingList {
 
-
-
-
    /**
     * @name config
     * @type {any}
@@ -22,9 +21,6 @@ export class ShoppingList {
     * @description     Defines an object allowing the interface properties to be accessed
     */
    public config : Config;
-
-
-
 
    /**
     * @name columns
@@ -34,9 +30,6 @@ export class ShoppingList {
     */
    public columns : any;
 
-
-
-
    /**
     * @name rows
     * @type {any}
@@ -44,9 +37,6 @@ export class ShoppingList {
     * @description     Defines an object for storing returned data to be displayed in the template
     */
    public rows : any;
-
-
-
 
    constructor(public navCtrl 	: NavController,
                private _HTTP   	: HttpClient)
@@ -60,7 +50,9 @@ export class ShoppingList {
       ];
    }
 
-
+	 goToAddPage(){
+		 this.navCtrl.push(HomePage)
+	 }
 
 
    /**

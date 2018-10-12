@@ -1,7 +1,7 @@
 page-shoppinglist {
 
    .datatable-header {
-      background: rgba(164, 192, 214,1);
+      background: rgba(255, 206, 242,1);
       padding: 1em 0 0 1em;
    }
 
@@ -15,7 +15,7 @@ page-shoppinglist {
    }
 
    .datatable-row-even {
-      background: rgba(240, 240, 240, 1);
+      background: rgba(255, 255, 255, 1);
    }
 
    .datatable-row-odd {
@@ -30,7 +30,7 @@ page-shoppinglist {
 
    // Style footer appearance
    .datatable-footer {
-      background: rgba(218, 226, 234,1);
+      background: rgba(255, 255, 255, 1);
       padding: 0 1em 0 1em;
 
       .pager {

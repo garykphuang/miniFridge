@@ -1,36 +1,14 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Shopping List
+  <ion-toolbar color="danger">
+    <ion-title text-center>
+      Your Shopping List
     </ion-title>
-  </ion-navbar>
-
-  <ion-toolbar>
-    <button ion-button block color="secondary">
-      Add
-    </button>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
 
-
-  <div>
-
-  	<!--
-  	   Embed the ngx-datatable component with following property bindings/values:
-       1. sorttype - allow data to be sorted on multiple columns
-       2. headerHeight - Set height of table header at 50 pixels
-       3. footerHeight - Set height of table footer at 50 pixels
-       4. rowHeight - Set height of table rows at 50 pixels
-       5. rows - Derives the data for the table rows from the component class
-                 property of rows
-       6. columns - Derives the names for the table columns from the component
-                    class property of columns
-       7. columnMode - Use of standard, flex or force - Force value makes columns
-                       equidistant and span the width of the parent container
-       8. limit - the number of records to display before paginating the results
-  	-->
+  <!-- <div>
      <ngx-datatable
        [sortType]="'multi'"
        [headerHeight]="50"
@@ -41,25 +19,64 @@
        [columnMode]="'force'"
        [limit]="10">
      </ngx-datatable>
-  </div>
-
+  </div> -->
 
   <ion-list>
-    <ion-list-header>
-      Dairy
-    </ion-list-header>
-    <ion-item>Milk</ion-item>
-    <ion-item>Yogurt</ion-item>
-    <ion-list-header>
-      Protein
-    </ion-list-header>
-    <ion-item>Pork</ion-item>
-    <ion-item>Seitan</ion-item>
-    <ion-list-header>
-      Produce
-    </ion-list-header>
-    <ion-item>Onions</ion-item>
-    <ion-item>Kiwis</ion-item>
+    <ion-list-header>Dairy</ion-list-header>
+    <ion-item>
+      <ion-label>
+        Milk
+      </ion-label>
+      <ion-checkbox [(ngModel)]="Milk"></ion-checkbox>
+    </ion-item>
+    <ion-item-divider></ion-item-divider>
+
+    <ion-list-header>Protein</ion-list-header>
+    <ion-item>
+      <ion-label>
+        Chicken
+      </ion-label>
+      <ion-checkbox [(ngModel)]="Chicken"></ion-checkbox>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        Pork
+      </ion-label>
+      <ion-checkbox [(ngModel)]="Pork"></ion-checkbox>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        Eggs
+      </ion-label>
+      <ion-checkbox [(ngModel)]="Eggs"></ion-checkbox>
+    </ion-item>
+    <ion-item-divider></ion-item-divider>
+
+    <ion-list-header>Vegetables</ion-list-header>
+    <ion-item>
+      <ion-label>
+        Tomatoes
+      </ion-label>
+      <ion-checkbox [(ngModel)]="Tomatoes"></ion-checkbox>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        Peppers
+      </ion-label>
+      <ion-checkbox [(ngModel)]="Peppers"></ion-checkbox>
+    </ion-item>
+    <ion-item-divider></ion-item-divider>
   </ion-list>
+
+  <button ion-button block color="danger" (click)="goToAddPage()">
+    Add
+  </button>
+
+  <button ion-button block color="danger">
+    Remove
+  </button>
 
 </ion-content>

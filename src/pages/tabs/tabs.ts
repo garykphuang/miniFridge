@@ -9,7 +9,6 @@ import { Fridge } from '../fridge/fridge';
 })
 export class TabsPage {
 
-  tab1Root = HomePage;
   tab2Root = Fridge;
   tab3Root = ShoppingList;
 

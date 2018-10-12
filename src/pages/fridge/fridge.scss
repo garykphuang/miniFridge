@@ -1,7 +1,7 @@
 page-fridge {
 
    .datatable-header {
-      background: rgba(164, 192, 214,1);
+      background: rgba(191, 231, 255, 1);
       padding: 1em 0 0 1em;
    }
 
@@ -15,11 +15,11 @@ page-fridge {
    }
 
    .datatable-row-even {
-      background: rgba(240, 240, 240, 1);
+      background: rgba(255, 255, 255, 1);
    }
 
    .datatable-row-odd {
-      background: rgba(255, 255, 255,1);
+      background: rgba(255, 255, 255, 1);
    }
 
    .datatable-body-cell {
@@ -30,7 +30,7 @@ page-fridge {
 
    // Style footer appearance
    .datatable-footer {
-      background: rgba(218, 226, 234,1);
+      background: rgba(255, 255, 255, 1);
       padding: 0 1em 0 1em;
 
       .pager {

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NavController } from 'ionic-angular';
 
+import { HomePage } from '../home/home';
 
 export interface Config {
 	fridgeItems: string;
@@ -10,12 +11,10 @@ export interface Config {
 
 @Component({
   selector: 'page-fridge',
-  templateUrl: 'fridge.html'
+  templateUrl: 'fridge.html',
 })
+
 export class Fridge {
-
-
-
 
    /**
     * @name config
@@ -25,9 +24,6 @@ export class Fridge {
     */
    public config : Config;
 
-
-
-
    /**
     * @name columns
     * @type {any}
@@ -36,9 +32,6 @@ export class Fridge {
     */
    public columns : any;
 
-
-
-
    /**
     * @name rows
     * @type {any}
@@ -46,9 +39,6 @@ export class Fridge {
     * @description     Defines an object for storing returned data to be displayed in the template
     */
    public rows : any;
-
-
-
 
    constructor(public navCtrl 	: NavController,
                private _HTTP   	: HttpClient)
@@ -62,8 +52,9 @@ export class Fridge {
       ];
    }
 
-
-
+	 	goToAddPage(){
+			this.navCtrl.push(HomePage)
+		}
 
    /**
     * Retrieve the technologies.json file (supplying the data type, via
