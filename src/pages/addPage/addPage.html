@@ -14,15 +14,9 @@
       </ion-item>
 
       <ion-item>
-        <ion-label floating >Expiration</ion-label>
-        <ion-input type="text" formControlName="expiration" class="form-controll" required></ion-input>
+        <ion-label floating >Category</ion-label>
+        <ion-input type="text" formControlName="category" class="form-controll" required></ion-input>
       </ion-item>
-
-      <ion-item>
-        <ion-label floating >Location</ion-label>
-        <ion-input type="text" formControlName="location" class="form-controll" required></ion-input>
-      </ion-item>
-
 
     </form>
     <button ion-button block color="secondary" [disabled]="!simple_form.valid" (click)="add(simple_form.value)" type="submit">Ok</button>

@@ -1,32 +1,46 @@
 <ion-header>
   <ion-navbar color="primary">
+
     <ion-title text-center>
       Your Fridge
     </ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="goToShoppingList()">
+        <ion-icon name="cart"></ion-icon>
+      </button>
+    </ion-buttons>
+
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
 
-  <div>
-     <ngx-datatable
-       [sortType]="'multi'"
-       [headerHeight]="50"
-       [footerHeight]="50"
-       [rowHeight]="50"
-       [rows]="rows"
-       [columns]="columns"
-       [columnMode]="'force'"
-       [limit]="10">
-     </ngx-datatable>
-  </div>
+  <ngx-datatable class="fullscreen"
+    [ngClass]="tablestyle"
+    [rows]="rows"
+    [columnMode]="'force'"
+    [sortType]="'multi'"
+    [headerHeight]="50"
+    [rowHeight]="50"
+    [reorderable]="true">
+    <ngx-datatable-column name="Item" [width]="110"></ngx-datatable-column>
+    <ngx-datatable-column name="Exp" [width]="60"></ngx-datatable-column>
+    <ngx-datatable-column name="Location" [width]="100"></ngx-datatable-column>
+    <ngx-datatable-column [width]="50">
+      <ng-template ngx-datatable-cell-template let-row="row">
+        <button ion-button icon small clear color="dark">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ng-template>
+    </ngx-datatable-column>
+  </ngx-datatable>
 
+</ion-content>
+
+<ion-footer>
   <button ion-button block color="primary" (click)="goToAddPage()">
     Add
   </button>
 
-  <button ion-button block color="primary">
-    Remove
-  </button>
-
-</ion-content>
+</ion-footer>

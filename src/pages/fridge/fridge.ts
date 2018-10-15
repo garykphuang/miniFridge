@@ -3,11 +3,11 @@ import { HttpClient } from '@angular/common/http';
 import { NavController } from 'ionic-angular';
 
 import { HomePage } from '../home/home';
+import { ShoppingList } from '../shopping_list/shopping_list';
 
 export interface Config {
 	fridgeItems: string;
 }
-
 
 @Component({
   selector: 'page-fridge',
@@ -16,59 +16,14 @@ export interface Config {
 
 export class Fridge {
 
-   /**
-    * @name config
-    * @type {any}
-    * @public
-    * @description     Defines an object allowing the interface properties to be accessed
-    */
-   public config : Config;
-
-   /**
-    * @name columns
-    * @type {any}
-    * @public
-    * @description     Defines an object for storing the column definitions of the datatable
-    */
-   public columns : any;
-
-   /**
-    * @name rows
-    * @type {any}
-    * @public
-    * @description     Defines an object for storing returned data to be displayed in the template
-    */
    public rows : any;
 
    constructor(public navCtrl 	: NavController,
-               private _HTTP   	: HttpClient)
-   {
-      // Define the columns for the data table
-      // (based off the names of the keys in the JSON file)
-      this.columns = [
-        { prop: 'Item' },
-        { name: 'Expiration' },
-        { name: 'Location' }
-      ];
+               private http   	: HttpClient) {
    }
 
-	 	goToAddPage(){
-			this.navCtrl.push(HomePage)
-		}
-
-   /**
-    * Retrieve the technologies.json file (supplying the data type, via
-    * the config property of the interface object, to 'instruct' Angular
-    * on the 'shape' of the object returned in the observable and how to
-    * parse that)
-    *
-    * @public
-    * @method ionViewDidLoad
-    * @return {none}
-    */
-   ionViewDidLoad() : void
-   {
-      this._HTTP
+   ionViewDidLoad() : void {
+      this.http
       .get<Config>('../../assets/data/fridgeItems.json')
       .subscribe((data) =>
       {
@@ -76,4 +31,13 @@ export class Fridge {
       });
 
    }
+
+	 goToShoppingList(){
+		 this.navCtrl.push(ShoppingList)
+	 }
+
+	 goToAddPage(){
+		 this.navCtrl.push(HomePage)
+	 }
+
 }

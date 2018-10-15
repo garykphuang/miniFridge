@@ -1,82 +1,99 @@
 <ion-header>
-  <ion-toolbar color="danger">
+  <ion-navbar color="danger">
     <ion-title text-center>
       Your Shopping List
     </ion-title>
-  </ion-toolbar>
+  </ion-navbar>
 </ion-header>
 
 <ion-content padding>
 
-  <!-- <div>
-     <ngx-datatable
-       [sortType]="'multi'"
-       [headerHeight]="50"
-       [footerHeight]="50"
-       [rowHeight]="50"
-       [rows]="rows"
-       [columns]="columns"
-       [columnMode]="'force'"
-       [limit]="10">
-     </ngx-datatable>
-  </div> -->
+  <ngx-datatable
+    class="fullscreen"
+    [ngClass]="tableStyle"
+    [rows]="rows"
+    [columnMode]="'force'"
+    [rowHeight]="50"
+    [headerHeight]="50">
+    <ngx-datatable-column name="Item"></ngx-datatable-column>
+    <ngx-datatable-column name="Category"></ngx-datatable-column>
+    <ngx-datatable-column [width]="50">
+      <ng-template ngx-datatable-cell-template let-row="row">
+        <button ion-button icon small clear color="dark">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ng-template>
+    </ngx-datatable-column>
+  </ngx-datatable>
 
-  <ion-list>
-    <ion-list-header>Dairy</ion-list-header>
-    <ion-item>
-      <ion-label>
+  <!-- <ion-list>
+    <ion-item-divider>Dairy</ion-item-divider>
+
+    <ion-item-sliding #item>
+      <ion-item>
         Milk
-      </ion-label>
-      <ion-checkbox [(ngModel)]="Milk"></ion-checkbox>
-    </ion-item>
-    <ion-item-divider></ion-item-divider>
+      </ion-item>
+      <ion-item-options slide="left">
+        <button ion-button color="dark">Remove</button>
+      </ion-item-options>
+    </ion-item-sliding>
 
-    <ion-list-header>Protein</ion-list-header>
-    <ion-item>
-      <ion-label>
+    <ion-item-divider>Protein</ion-item-divider>
+
+    <ion-item-sliding #item>
+      <ion-item>
         Chicken
-      </ion-label>
-      <ion-checkbox [(ngModel)]="Chicken"></ion-checkbox>
-    </ion-item>
+      </ion-item>
+      <ion-item-options slide="left">
+        <button ion-button color="dark">Remove</button>
+      </ion-item-options>
+    </ion-item-sliding>
 
-    <ion-item>
-      <ion-label>
+    <ion-item-sliding #item>
+      <ion-item>
         Pork
-      </ion-label>
-      <ion-checkbox [(ngModel)]="Pork"></ion-checkbox>
-    </ion-item>
+      </ion-item>
+      <ion-item-options slide="left">
+        <button ion-button color="dark">Remove</button>
+      </ion-item-options>
+    </ion-item-sliding>
 
-    <ion-item>
-      <ion-label>
-        Eggs
-      </ion-label>
-      <ion-checkbox [(ngModel)]="Eggs"></ion-checkbox>
-    </ion-item>
-    <ion-item-divider></ion-item-divider>
+    <ion-item-divider>Vegetables</ion-item-divider>
 
-    <ion-list-header>Vegetables</ion-list-header>
-    <ion-item>
-      <ion-label>
-        Tomatoes
-      </ion-label>
-      <ion-checkbox [(ngModel)]="Tomatoes"></ion-checkbox>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>
+    <ion-item-sliding #item>
+      <ion-item>
         Peppers
-      </ion-label>
-      <ion-checkbox [(ngModel)]="Peppers"></ion-checkbox>
-    </ion-item>
-    <ion-item-divider></ion-item-divider>
-  </ion-list>
+      </ion-item>
+      <ion-item-options slide="left">
+        <button ion-button color="dark">Remove</button>
+      </ion-item-options>
+    </ion-item-sliding>
 
+    <ion-item-sliding #item>
+      <ion-item>
+        Tomatoes
+      </ion-item>
+      <ion-item-options slide="left">
+        <button ion-button color="dark">Remove</button>
+      </ion-item-options>
+    </ion-item-sliding>
+
+    <ion-item-sliding #item>
+      <ion-item>
+        Cucumbers
+      </ion-item>
+      <ion-item-options slide="left">
+        <button ion-button color="dark">Remove</button>
+      </ion-item-options>
+    </ion-item-sliding>
+
+  </ion-list> -->
+
+</ion-content>
+
+<ion-footer>
   <button ion-button block color="danger" (click)="goToAddPage()">
     Add
   </button>
 
-  <button ion-button block color="danger">
-    Remove
-  </button>
-
-</ion-content>
+</ion-footer>

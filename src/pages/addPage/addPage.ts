@@ -4,10 +4,10 @@ import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms'
 import { FirebaseService } from '../../services/firebase.service';
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'page-addPage',
+  templateUrl: 'addPage.html'
 })
-export class HomePage {
+export class AddPage {
 
   simple_form: FormGroup;
 
@@ -27,8 +27,7 @@ export class HomePage {
   getData(){
     this.simple_form = this.formBuilder.group({
       item: new FormControl('', Validators.required),
-      exp: new FormControl('', Validators.required),
-      location: new FormControl('', Validators.required)
+      category: new FormControl('', Validators.required),
     });
   }
 

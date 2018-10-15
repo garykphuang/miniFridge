@@ -1,24 +1,52 @@
 {
    "shoppingList" : [
       {
-         "Item" : "Eggs",
-         "category" : "Dairy",
-         "quantity" : "12 eggs"
+         "item" : "Eggs",
+         "category" : "Dairy"
       },
       {
-         "Item" : "Chicken",
-         "category" : "Protein",
-         "quantity" : "2 lb"
+         "item" : "Chicken",
+         "category" : "Protein"
       },
       {
-         "Item" : "Oranges",
-         "category" : "Fruit",
-         "quantity" : "4 oranges"
+         "item" : "Oranges",
+         "category" : "Fruit"
       },
       {
-         "Item" : "Onion",
-         "category" : "Vegetable",
-         "quantity" : "12 onions"
+         "item" : "Onion",
+         "category" : "Vegetable"
+      },
+      {
+         "item" : "Apples",
+         "category" : "Fruit"
+      },
+      {
+         "item" : "Chocolate",
+         "category" : "Snacks"
+      },
+      {
+         "item" : "Milk",
+         "category" : "Dairy"
+      },
+      {
+         "item" : "Grapes",
+         "category" : "Fruit"
+      },
+      {
+         "item" : "Tomatoes",
+         "category" : "Vegetable"
+      },
+      {
+         "item" : "Fish",
+         "category" : "Protein"
+      },
+      {
+         "item" : "Peppers",
+         "category" : "Vegetable"
+      },
+      {
+         "item" : "Bananas",
+         "category" : "Fruit"
       }
    ]
 }

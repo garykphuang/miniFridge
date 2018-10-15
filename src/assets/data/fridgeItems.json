@@ -1,24 +1,39 @@
 {
    "fridgeItems" : [
       {
-         "Item" : "Eggs",
-         "expiration" : "September 15",
-         "location" : "Top Shelf"
-      },
-      {
-         "Item" : "Ham",
-         "expiration" : "September 23",
-         "location" : "Bottom Shelf"
-      },
-      {
-         "Item" : "Milk",
-         "expiration" : "September 10",
+         "item" : "Eggs",
+         "exp" : "10/18",
          "location" : "Fridge Door"
       },
       {
-         "Item" : "Chocolate",
-         "expiration" : "October 23",
-         "location" : "Middle Shelf"
+         "item" : "Ham",
+         "exp" : "11/18",
+         "location" : "Bottom Shelf"
+      },
+      {
+         "item" : "Milk",
+         "exp" : "10/18",
+         "location" : "Fridge Door"
+      },
+      {
+         "item" : "Chocolate",
+         "exp" : "10/18",
+         "location" : "Top Shelf"
+      },
+      {
+         "item" : "Peanut Butter",
+         "exp" : "11/18",
+         "location" : "Top Shelf"
+      },
+      {
+         "item" : "Jelly",
+         "exp" : "08/19",
+         "location" : "Top Shelf"
+      },
+      {
+         "item" : "Tomatoes",
+         "exp" : "10/18",
+         "location" : "Bottom Shelf"
       }
    ]
 }
