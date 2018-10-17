@@ -7,17 +7,15 @@
 </ion-header>
 
 <ion-content padding>
-  <form [formGroup]="simple_form" >
-      <ion-item>
-        <ion-label floating >Item</ion-label>
-        <ion-input type="text" formControlName="item" class="form-controll" required></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label floating >Category</ion-label>
-        <ion-input type="text" formControlName="category" class="form-controll" required></ion-input>
-      </ion-item>
-
-    </form>
-    <button ion-button block color="secondary" [disabled]="!simple_form.valid" (click)="add(simple_form.value)" type="submit">Ok</button>
+  <form class="new-user-form" [formGroup]="simple_form" (ngSubmit)="onSubmit(simple_form.value)">
+    <ion-item>
+      <ion-label floating color="primary">Item</ion-label>
+      <ion-input type="text" formControlName="item" class="form-control" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating color="primary">Category</ion-label>
+      <ion-input type="text" formControlName="category" class="form-control" required></ion-input>
+    </ion-item>
+    <button class="form-action-button" ion-button block type="submit" [disabled]="!simple_form.valid">Add</button>
+  </form>
 </ion-content>

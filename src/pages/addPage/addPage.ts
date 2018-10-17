@@ -31,13 +31,18 @@ export class AddPage {
     });
   }
 
-  add(value){
-    this.firebaseService.addfridgeItems(value)
-    .then( res => {
-      let toast = this.toastCtrl.create({
-        message: 'Item was created successfully',
-        duration: 3000
-      });
+  onSubmit(value){
+    let data = {
+      item: value.item,
+      category: value.category,
+    }
+    this.firebaseService.createShoppingListItems(data)
+    .then(
+      res => {
+        let toast = this.toastCtrl.create({
+          message: 'Item was created successfully',
+          duration: 3000
+        });
       toast.present();
       this.resetFields();
     }, err => {

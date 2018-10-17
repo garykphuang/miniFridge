@@ -27,18 +27,24 @@ export class HomePage {
   getData(){
     this.simple_form = this.formBuilder.group({
       item: new FormControl('', Validators.required),
-      exp: new FormControl('', Validators.required),
+      expiration: new FormControl('', Validators.required),
       location: new FormControl('', Validators.required)
     });
   }
 
-  add(value){
-    this.firebaseService.addfridgeItems(value)
-    .then( res => {
-      let toast = this.toastCtrl.create({
-        message: 'Item was created successfully',
-        duration: 3000
-      });
+  onSubmit(value){
+    let data = {
+      item: value.item,
+      expiration: value.expiration,
+      location: value.location
+    }
+    this.firebaseService.createFridgeItems(data)
+    .then(
+      res => {
+        let toast = this.toastCtrl.create({
+          message: 'Item was created successfully',
+          duration: 3000
+        });
       toast.present();
       this.resetFields();
     }, err => {
