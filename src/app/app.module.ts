@@ -8,15 +8,19 @@ import { Fridge } from '../pages/fridge/fridge';
 import { ShoppingList } from '../pages/shopping_list/shopping_list';
 import { HomePage } from '../pages/home/home';
 import { AddPage } from '../pages/addPage/addPage';
+import { LoginPage } from '../pages/login/login';
+import { RegisterPage } from '../pages/register/register';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 import { FirebaseService } from '../services/firebase.service';
+import { AuthService } from '../services/auth.service';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environment/environment';
 
 @NgModule({
@@ -25,7 +29,9 @@ import { environment } from '../environment/environment';
     ShoppingList,
     HomePage,
     Fridge,
-    AddPage
+    AddPage,
+    LoginPage,
+    RegisterPage
   ],
   imports: [
     BrowserModule,
@@ -33,7 +39,8 @@ import { environment } from '../environment/environment';
     NgxDatatableModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -41,12 +48,15 @@ import { environment } from '../environment/environment';
     ShoppingList,
     HomePage,
     Fridge,
-    AddPage
+    AddPage,
+    LoginPage,
+    RegisterPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     FirebaseService,
+    AuthService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

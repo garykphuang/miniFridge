@@ -7,6 +7,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
 @Injectable()
 export class FirebaseService {
 
+  private snapshotChangesSubscription: any;
   constructor(
     public afs: AngularFirestore,
   ){
@@ -38,6 +39,12 @@ export class FirebaseService {
           err => reject(err)
         )
       })
+    }
+
+    unsubscribeOnLogOut(){
+      //remember to unsubscribe from the snapshotChanges
+      // debugger;
+      this.snapshotChangesSubscription.unsubscribe();
     }
 
     // getFridgeItems(){
