@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import 'rxjs/add/operator/toPromise';
 import { AngularFirestore } from 'angularfire2/firestore';
+import * as firebase from 'firebase/app';
 
 
 
@@ -16,7 +17,8 @@ export class FirebaseService {
 
     createFridgeItems(value){
       return new Promise<any>((resolve, reject) => {
-        this.afs.collection('fridgeItems').add({
+        let currentUser = firebase.auth().currentUser;
+      this.afs.collection('people').doc(currentUser.uid).collection('fridgeItems').add({
           item: value.item,
           expiration: value.expiration,
           location: value.location
@@ -30,7 +32,7 @@ export class FirebaseService {
 
     createShoppingListItems(value){
       return new Promise<any>((resolve, reject) => {
-        this.afs.collection('shoppingList').add({
+      this.afs.collection('people').doc(currentUser.uid).collection('ShoppingList').add({
           item: value.item,
           category: value.category
         })
