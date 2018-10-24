@@ -32,6 +32,7 @@ export class FirebaseService {
 
     createShoppingListItems(value){
       return new Promise<any>((resolve, reject) => {
+        let currentUser = firebase.auth().currentUser;
       this.afs.collection('people').doc(currentUser.uid).collection('ShoppingList').add({
           item: value.item,
           category: value.category
