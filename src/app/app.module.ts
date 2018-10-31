@@ -10,6 +10,7 @@ import { HomePage } from '../pages/home/home';
 import { AddPage } from '../pages/addPage/addPage';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
+import { DetailsPage } from '../pages/details/details';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -31,7 +32,8 @@ import { environment } from '../environment/environment';
     Fridge,
     AddPage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    DetailsPage
   ],
   imports: [
     BrowserModule,
@@ -50,7 +52,8 @@ import { environment } from '../environment/environment';
     Fridge,
     AddPage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    DetailsPage
   ],
   providers: [
     StatusBar,

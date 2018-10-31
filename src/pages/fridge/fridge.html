@@ -15,27 +15,14 @@
 </ion-header>
 
 <ion-content padding>
-
-  <ngx-datatable class="fullscreen"
-    [ngClass]="tablestyle"
-    [rows]="rows"
-    [columnMode]="'force'"
-    [sortType]="'multi'"
-    [headerHeight]="50"
-    [rowHeight]="50"
-    [reorderable]="true">
-    <ngx-datatable-column name="Item" [width]="110"></ngx-datatable-column>
-    <ngx-datatable-column name="Exp" [width]="60"></ngx-datatable-column>
-    <ngx-datatable-column name="Location" [width]="100"></ngx-datatable-column>
-    <ngx-datatable-column [width]="50">
-      <ng-template ngx-datatable-cell-template let-row="row">
-        <button ion-button icon small clear color="dark">
-          <ion-icon name="trash"></ion-icon>
-        </button>
-      </ng-template>
-    </ngx-datatable-column>
-  </ngx-datatable>
-0
+    <ion-list>
+      <ion-item *ngFor="let item of items" (click)="viewDetails(item.payload.doc.id,item.payload.doc.data())">
+        <h2>{{item.payload.doc.data().item}}</h2>
+        <p>Expiration: {{item.payload.doc.data().expiration}}</p>
+        <p>Location: {{item.payload.doc.data().location}}</p>
+        <button ion-button clear item-end>Details</button>
+      </ion-item>
+    </ion-list>
 </ion-content>
 
 <ion-footer>

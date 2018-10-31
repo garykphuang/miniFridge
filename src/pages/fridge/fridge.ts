@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { NavController } from 'ionic-angular';
 
 import { HomePage } from '../home/home';
+import { DetailsPage } from '../details/details';
 import { ShoppingList } from '../shopping_list/shopping_list';
 
+import { FirebaseService } from '../../services/firebase.service';
+
 export interface Config {
-	fridgeItems: string;
 }
 
 @Component({
@@ -16,21 +17,31 @@ export interface Config {
 
 export class Fridge {
 
-   public rows : any;
-
    constructor(public navCtrl 	: NavController,
-               private http   	: HttpClient) {
-   }
+		     			 public firebaseService: FirebaseService) {}
 
-   ionViewDidLoad() : void {
-      this.http
-      .get<Config>('../../assets/data/fridgeItems.json')
-      .subscribe((data) =>
-      {
-         this.rows = data.fridgeItems;
-      });
+	 ionViewWillEnter(){
+		 this.getData();
+	 }
 
-   }
+	 getData(){
+		 this.firebaseService.getFridgeItems()
+		 .then(fridgeItems => {
+			 this.items = fridgeItems;
+		 })
+	 }
+
+	 viewDetails(id, item){
+		 // debugger
+		 let data = {
+			 item: item.item,
+			 expiration: item.expiration,
+			 location: item.location
+		 }
+		 this.navCtrl.push(DetailsPage, {
+			 data: data
+		 })
+	 }
 
 	 goToShoppingList(){
 		 this.navCtrl.push(ShoppingList)

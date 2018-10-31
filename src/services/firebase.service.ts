@@ -44,6 +44,38 @@ export class FirebaseService {
       })
     }
 
+    getFridgeItems(){
+      return new Promise<any>((resolve, reject) => {
+        let currentUser = firebase.auth().currentUser;
+      this.snapshotChangesSubscription = this.afs.collection('people').doc(currentUser.uid).collection('fridgeItems').snapshotChanges()
+        .subscribe(snapshots => {
+          resolve(snapshots);
+        })
+      });
+    }
+
+    updateFridgeItem(itemKey, value){
+      return new Promise<any>((resolve, reject) => {
+        let currentUser = firebase.auth().currentUser;
+        this.afs.collection('people').doc(currentUser.uid).collection('fridgeItems').doc(itemKey).set(value)
+        .then(
+          res => resolve(res),
+          err => reject(err)
+        )
+      })
+    }
+
+    deleteFridgeItem(itemKey){
+      return new Promise<any>((resolve, reject) => {
+        let currentUser = firebase.auth().currentUser;
+        this.afs.collection('people').doc(currentUser.uid).collection('fridgeItems').doc(itemKey).delete()
+        .then(
+          res => resolve(res),
+          err => reject(err)
+        )
+      })
+    }
+
     unsubscribeOnLogOut(){
       //remember to unsubscribe from the snapshotChanges
       // debugger;
