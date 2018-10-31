@@ -7,88 +7,13 @@
 </ion-header>
 
 <ion-content padding>
-
-  <ngx-datatable
-    class="fullscreen"
-    [ngClass]="tableStyle"
-    [rows]="rows"
-    [columnMode]="'force'"
-    [rowHeight]="50"
-    [headerHeight]="50">
-    <ngx-datatable-column name="Item"></ngx-datatable-column>
-    <ngx-datatable-column name="Category"></ngx-datatable-column>
-    <ngx-datatable-column [width]="50">
-      <ng-template ngx-datatable-cell-template let-row="row">
-        <button ion-button icon small clear color="dark">
-          <ion-icon name="trash"></ion-icon>
-        </button>
-      </ng-template>
-    </ngx-datatable-column>
-  </ngx-datatable>
-
-  <!-- <ion-list>
-    <ion-item-divider>Dairy</ion-item-divider>
-
-    <ion-item-sliding #item>
-      <ion-item>
-        Milk
+    <ion-list>
+      <ion-item *ngFor="let item of items" (click)="viewDetails(item.payload.doc.id,item.payload.doc.data())">
+        <h2>{{item.payload.doc.data().item}}</h2>
+        <p>Category: {{item.payload.doc.data().category}}</p>
+        <button ion-button clear item-end>Details</button>
       </ion-item>
-      <ion-item-options slide="left">
-        <button ion-button color="dark">Remove</button>
-      </ion-item-options>
-    </ion-item-sliding>
-
-    <ion-item-divider>Protein</ion-item-divider>
-
-    <ion-item-sliding #item>
-      <ion-item>
-        Chicken
-      </ion-item>
-      <ion-item-options slide="left">
-        <button ion-button color="dark">Remove</button>
-      </ion-item-options>
-    </ion-item-sliding>
-
-    <ion-item-sliding #item>
-      <ion-item>
-        Pork
-      </ion-item>
-      <ion-item-options slide="left">
-        <button ion-button color="dark">Remove</button>
-      </ion-item-options>
-    </ion-item-sliding>
-
-    <ion-item-divider>Vegetables</ion-item-divider>
-
-    <ion-item-sliding #item>
-      <ion-item>
-        Peppers
-      </ion-item>
-      <ion-item-options slide="left">
-        <button ion-button color="dark">Remove</button>
-      </ion-item-options>
-    </ion-item-sliding>
-
-    <ion-item-sliding #item>
-      <ion-item>
-        Tomatoes
-      </ion-item>
-      <ion-item-options slide="left">
-        <button ion-button color="dark">Remove</button>
-      </ion-item-options>
-    </ion-item-sliding>
-
-    <ion-item-sliding #item>
-      <ion-item>
-        Cucumbers
-      </ion-item>
-      <ion-item-options slide="left">
-        <button ion-button color="dark">Remove</button>
-      </ion-item-options>
-    </ion-item-sliding>
-
-  </ion-list> -->
-
+    </ion-list>
 </ion-content>
 
 <ion-footer>

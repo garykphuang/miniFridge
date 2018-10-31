@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { NavController } from 'ionic-angular';
 
+import { DetailsPage } from '../details/details';
 import { AddToShoppingList } from '../addToShoppingList/addToShoppingList';
+
+import { FirebaseService } from '../../services/firebase.service';
 
 export interface Config {
 	shoppingList: string;
@@ -15,20 +17,30 @@ export interface Config {
 
 export class ShoppingList {
 
-   public rows : any;
+	 constructor(public navCtrl 	: NavController,
+		     			 public firebaseService: FirebaseService) {}
 
-   constructor(public navCtrl 	: NavController,
-               private http   	: HttpClient) {
+	 ionViewWillEnter(){
+		 this.getData();
 	 }
 
-   ionViewDidLoad() : void {
-      this.http
-      .get<Config>('../../assets/data/shoppingList.json')
-      .subscribe((data) =>
-      {
-         this.rows = data.shoppingList;
-      });
-   }
+	 getData(){
+		 this.firebaseService.getShoppingListItems()
+		 .then(shoppingListItems => {
+			 this.items = shoppingListItems;
+		 })
+	 }
+
+	 viewDetails(id, item){
+		 // debugger
+		 let data = {
+			 item: item.item,
+			 category: item.category
+		 }
+		 this.navCtrl.push(DetailsPage, {
+			 data: data
+		 })
+	 }
 
 	 goToAddPage(){
 		 this.navCtrl.push(AddToShoppingList)

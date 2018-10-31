@@ -33,7 +33,7 @@ export class FirebaseService {
     createShoppingListItems(value){
       return new Promise<any>((resolve, reject) => {
         let currentUser = firebase.auth().currentUser;
-      this.afs.collection('people').doc(currentUser.uid).collection('ShoppingList').add({
+      this.afs.collection('people').doc(currentUser.uid).collection('shoppingListItems').add({
           item: value.item,
           category: value.category
         })
@@ -69,6 +69,38 @@ export class FirebaseService {
       return new Promise<any>((resolve, reject) => {
         let currentUser = firebase.auth().currentUser;
         this.afs.collection('people').doc(currentUser.uid).collection('fridgeItems').doc(itemKey).delete()
+        .then(
+          res => resolve(res),
+          err => reject(err)
+        )
+      })
+    }
+
+    getShoppingListItems(){
+      return new Promise<any>((resolve, reject) => {
+        let currentUser = firebase.auth().currentUser;
+      this.snapshotChangesSubscription = this.afs.collection('people').doc(currentUser.uid).collection('shoppingListItems').snapshotChanges()
+        .subscribe(snapshots => {
+          resolve(snapshots);
+        })
+      });
+    }
+
+    updateShoppingListItem(itemKey, value){
+      return new Promise<any>((resolve, reject) => {
+        let currentUser = firebase.auth().currentUser;
+        this.afs.collection('people').doc(currentUser.uid).collection('shoppingListItems').doc(itemKey).set(value)
+        .then(
+          res => resolve(res),
+          err => reject(err)
+        )
+      })
+    }
+
+    deleteShoppingListItem(itemKey){
+      return new Promise<any>((resolve, reject) => {
+        let currentUser = firebase.auth().currentUser;
+        this.afs.collection('people').doc(currentUser.uid).collection('shoppingListItems').doc(itemKey).delete()
         .then(
           res => resolve(res),
           err => reject(err)
