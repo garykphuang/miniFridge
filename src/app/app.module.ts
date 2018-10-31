@@ -6,8 +6,8 @@ import { MyApp } from './app.component';
 
 import { Fridge } from '../pages/fridge/fridge';
 import { ShoppingList } from '../pages/shopping_list/shopping_list';
-import { HomePage } from '../pages/home/home';
-import { AddPage } from '../pages/addPage/addPage';
+import { AddToFridge } from '../pages/addToFridge/addToFridge';
+import { AddToShoppingList } from '../pages/addToShoppingList/addToShoppingList';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 
@@ -27,9 +27,9 @@ import { environment } from '../environment/environment';
   declarations: [
     MyApp,
     ShoppingList,
-    HomePage,
+    AddToFridge,
     Fridge,
-    AddPage,
+    AddToShoppingList,
     LoginPage,
     RegisterPage
   ],
@@ -46,9 +46,9 @@ import { environment } from '../environment/environment';
   entryComponents: [
     MyApp,
     ShoppingList,
-    HomePage,
+    AddToFridge,
     Fridge,
-    AddPage,
+    AddToShoppingList,
     LoginPage,
     RegisterPage
   ],

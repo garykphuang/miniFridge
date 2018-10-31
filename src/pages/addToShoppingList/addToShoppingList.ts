@@ -4,10 +4,10 @@ import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms'
 import { FirebaseService } from '../../services/firebase.service';
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'page-addToShoppingList',
+  templateUrl: 'addToShoppingList.html'
 })
-export class HomePage {
+export class AddToShoppingList {
 
   simple_form: FormGroup;
 
@@ -27,18 +27,16 @@ export class HomePage {
   getData(){
     this.simple_form = this.formBuilder.group({
       item: new FormControl('', Validators.required),
-      expiration: new FormControl('', Validators.required),
-      location: new FormControl('', Validators.required)
+      category: new FormControl('', Validators.required),
     });
   }
 
   onSubmit(value){
     let data = {
       item: value.item,
-      expiration: value.expiration,
-      location: value.location
+      category: value.category,
     }
-    this.firebaseService.createFridgeItems(data)
+    this.firebaseService.createShoppingListItems(data)
     .then(
       res => {
         let toast = this.toastCtrl.create({

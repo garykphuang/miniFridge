@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NavController } from 'ionic-angular';
 
-import { AddPage } from '../addPage/addPage';
+import { AddToShoppingList } from '../addToShoppingList/addToShoppingList';
 
 export interface Config {
 	shoppingList: string;
@@ -31,7 +31,7 @@ export class ShoppingList {
    }
 
 	 goToAddPage(){
-		 this.navCtrl.push(AddPage)
+		 this.navCtrl.push(AddToShoppingList)
 	 }
 
 }

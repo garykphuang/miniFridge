@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NavController } from 'ionic-angular';
 
-import { HomePage } from '../home/home';
+import { AddToFridge } from '../addToFridge/addToFridge';
 import { ShoppingList } from '../shopping_list/shopping_list';
 
 export interface Config {
@@ -37,7 +37,7 @@ export class Fridge {
 	 }
 
 	 goToAddPage(){
-		 this.navCtrl.push(HomePage)
+		 this.navCtrl.push(AddToFridge)
 	 }
 
 }
