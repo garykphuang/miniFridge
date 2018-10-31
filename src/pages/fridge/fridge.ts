@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
+
 import { HomePage } from '../home/home';
 import { DetailsPage } from '../details/details';
+import { AddToFridge } from '../addToFridge/addToFridge';
 import { ShoppingList } from '../shopping_list/shopping_list';
 
 import { FirebaseService } from '../../services/firebase.service';
@@ -48,7 +50,7 @@ export class Fridge {
 	 }
 
 	 goToAddPage(){
-		 this.navCtrl.push(HomePage)
+		 this.navCtrl.push(AddToFridge)
 	 }
 
 }
