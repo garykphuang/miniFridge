@@ -10,7 +10,8 @@ import { AddToFridge } from '../pages/addToFridge/addToFridge';
 import { AddToShoppingList } from '../pages/addToShoppingList/addToShoppingList';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
-import { DetailsPage } from '../pages/details/details';
+import { FridgeDetails } from '../pages/fridgeDetails/fridgeDetails';
+import { ShoppingListDetails } from '../pages/shoppingListDetails/shoppingListDetails';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -33,7 +34,8 @@ import { environment } from '../environment/environment';
     AddToShoppingList,
     LoginPage,
     RegisterPage,
-    DetailsPage
+    ShoppingListDetails,
+    FridgeDetails
   ],
   imports: [
     BrowserModule,
@@ -53,7 +55,8 @@ import { environment } from '../environment/environment';
     AddToShoppingList,
     LoginPage,
     RegisterPage,
-    DetailsPage
+    ShoppingListDetails,
+    FridgeDetails
   ],
   providers: [
     StatusBar,

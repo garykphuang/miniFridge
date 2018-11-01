@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { DetailsPage } from '../details/details';
+import { FridgeDetails } from '../fridgeDetails/fridgeDetails';
 import { AddToFridge } from '../addToFridge/addToFridge';
 import { ShoppingList } from '../shopping_list/shopping_list';
 
@@ -31,6 +31,7 @@ export class Fridge {
 		 })
 	 }
 
+
 	 viewDetails(id, item){
 		 // debugger
 		 let data = {
@@ -38,7 +39,7 @@ export class Fridge {
 			 expiration: item.expiration,
 			 location: item.location
 		 }
-		 this.navCtrl.push(DetailsPage, {
+		 this.navCtrl.push(FridgeDetails, {
 			 data: data
 		 })
 	 }

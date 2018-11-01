@@ -4,10 +4,10 @@ import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms'
 import { FirebaseService } from '../../services/firebase.service';
 
 @Component({
-  selector: 'page-details',
-  templateUrl: 'details.html'
+  selector: 'page-fridgeDetails',
+  templateUrl: 'fridgeDetails.html'
 })
-export class DetailsPage {
+export class FridgeDetails {
 
   validations_form: FormGroup;
   item: any;
