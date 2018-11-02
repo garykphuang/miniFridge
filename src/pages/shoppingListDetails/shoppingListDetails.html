@@ -1,13 +1,13 @@
 <ion-header>
   <ion-navbar color="shopping">
-    <ion-title>
-      Add an Item
+    <ion-title text-center>
+      Update Item
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <form class="new-user-form" [formGroup]="simple_form" (ngSubmit)="onSubmit(simple_form.value)">
+  <form class="new-user-form" [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)">
     <ion-item>
       <ion-label floating color="shopping">Item</ion-label>
       <ion-input type="text" formControlName="item" class="form-control" required></ion-input>
@@ -16,6 +16,8 @@
       <ion-label floating color="shopping">Category</ion-label>
       <ion-input type="text" formControlName="category" class="form-control" required></ion-input>
     </ion-item>
-    <button class="form-action-button" ion-button block color="add" type="submit" [disabled]="!simple_form.valid">Add</button>
+    <button class="form-action-button" ion-button block color ="add" type="submit" [disabled]="!validations_form.valid">Update</button>
   </form>
+  <button class="form-action-button" ion-button block color="delete" (click)="delete()">Delete</button>
+
 </ion-content>

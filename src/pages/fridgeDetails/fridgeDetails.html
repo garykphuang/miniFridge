@@ -1,7 +1,7 @@
 <ion-header>
-  <ion-navbar color="secondary">
-    <ion-title>
-      Update Task
+  <ion-navbar color="fridge">
+    <ion-title text-center>
+      Update Item
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -9,19 +9,19 @@
 <ion-content padding>
   <form class="new-user-form" [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)">
     <ion-item>
-      <ion-label floating color="primary">Item</ion-label>
+      <ion-label floating color="fridge">Item</ion-label>
       <ion-input type="text" formControlName="item" class="form-control" required></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label floating color="primary">Expiration Date (MM/DD)</ion-label>
+      <ion-label floating color="fridge">Expiration Date (MM/DD)</ion-label>
       <ion-input type="text" formControlName="expiration" class="form-control" required></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label floating color="primary">Location</ion-label>
+      <ion-label floating color="fridge">Location</ion-label>
       <ion-input type="text" formControlName="location" class="form-control" required></ion-input>
     </ion-item>
-    <button class="form-action-button" ion-button block color ="secondary" type="submit" [disabled]="!validations_form.valid">Update</button>
+    <button class="form-action-button" ion-button block color ="add" type="submit" [disabled]="!validations_form.valid">Update</button>
   </form>
-  <button class="form-action-button" ion-button block color="danger" (click)="delete()">Delete</button>
+  <button class="form-action-button" ion-button block color="delete" (click)="delete()">Delete</button>
 
 </ion-content>

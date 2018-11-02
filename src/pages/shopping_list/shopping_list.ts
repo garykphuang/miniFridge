@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { DetailsPage } from '../details/details';
+import { ShoppingListDetails } from '../shoppingListDetails/shoppingListDetails';
 import { AddToShoppingList } from '../addToShoppingList/addToShoppingList';
 
 import { FirebaseService } from '../../services/firebase.service';
@@ -38,7 +38,7 @@ export class ShoppingList {
 			 item: item.item,
 			 category: item.category
 		 }
-		 this.navCtrl.push(DetailsPage, {
+		 this.navCtrl.push(ShoppingListDetails, {
 			 data: data
 		 })
 	 }

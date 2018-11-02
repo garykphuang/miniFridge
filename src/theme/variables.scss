@@ -22,8 +22,7 @@ $app-direction: ltr;
 // To view all the possible Ionic variables, see:
 // http://ionicframework.com/docs/theming/overriding-ionic-variables/
 
-
-
+  $text-input-highlight-color-valid: #aaaaaa;
 
 // Named Color Variables
 // --------------------------------------------------
@@ -34,11 +33,71 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #bfe7ff,
-  secondary:  #7cff6d,
-  danger:     #ffcef2,
-  light:      #f4f4f4,
-  dark:       #94abb7
+  primary:    #aaaaaa,
+
+  // Mykonos
+  // login:      #FFFFFF,
+  // fridge:     #0699D8,
+  // shopping:   #031944,
+  // add:        #FFE8B7,
+  // delete:     #3F3C2F
+
+  // Florence
+  // login:      #D36B5E,
+  // fridge:     #B52F4C,
+  // shopping:   #5B212E,
+  // add:        #BEC499,
+  // delete:     #777777
+
+  // London
+  // login:      #7A6F65,
+  // fridge:     #001F3F,
+  // shopping:   #FF2D2D,
+  // add:        #F2EBD0,
+  // delete:     #AF9F90
+
+  // Cairo
+  // login:      #EDC9AF,
+  // fridge:     #E2AB68,
+  // shopping:   #B77635,
+  // add:        #80DAEB,
+  // delete:     #F5D3A5
+
+  // New York
+  // login:      #F2D9B5,
+  // fridge:     #CFD6AB,
+  // shopping:   #BCBCBC,
+  // add:        #FFC700,
+  // delete:     #000000
+
+  // Rio De Janeiro
+  // login:      #45A871,
+  // fridge:     #C12645,
+  // shopping:   #3885EA,
+  // add:        #9B5E84,
+  // delete:     #F7BF59
+
+  // Dubai
+  // login:      #C1C1C1,
+  // fridge:     #01AEBF,
+  // shopping:   #536375,
+  // add:        #EAC58A,
+  // delete:     #CE7E37
+
+  // Istanbul
+  // login:      #BF3737,
+  // fridge:     #6F529B,
+  // shopping:   #573757,
+  // add:        #FFB7D4,
+  // delete:     #FFD6AD
+
+  // Honk Kong
+  login:      #6CB7A8,
+  fridge:     #C97944,
+  shopping:   #FFBE93,
+  add:        #CEC3AF,
+  delete:     #B1DFED
+
 );
 
 
