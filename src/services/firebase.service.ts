@@ -68,7 +68,7 @@ export class FirebaseService {
     deleteFridgeItem(itemKey){
       return new Promise<any>((resolve, reject) => {
         let currentUser = firebase.auth().currentUser;
-        this.afs.collection('people').doc(currentUser.uid).collection('fridgeItems').doc(itemKey).delete()
+        this.afs.collection('people').doc(currentUser.uid).collection('fridgeItems').doc(itemKey).remove()
         .then(
           res => resolve(res),
           err => reject(err)

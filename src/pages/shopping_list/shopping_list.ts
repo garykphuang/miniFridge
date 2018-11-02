@@ -24,6 +24,7 @@ export class ShoppingList {
 		 this.getData();
 	 }
 
+
 	 getData(){
 		 this.firebaseService.getShoppingListItems()
 		 .then(shoppingListItems => {

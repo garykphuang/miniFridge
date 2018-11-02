@@ -24,6 +24,7 @@ export class Fridge {
 		 this.getData();
 	 }
 
+
 	 getData(){
 		 this.firebaseService.getFridgeItems()
 		 .then(fridgeItems => {
