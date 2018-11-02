@@ -1,5 +1,11 @@
 <ion-header>
-  <ion-navbar color="primary">
+  <ion-navbar color="fridge">
+
+    <ion-buttons left>
+      <button ion-button icon-only (click)="logOut()">
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+    </ion-buttons>
 
     <ion-title text-center>
       Your Fridge
@@ -16,17 +22,19 @@
 
 <ion-content padding>
     <ion-list>
-      <ion-item *ngFor="let item of items" (click)="viewDetails(item.payload.doc.id,item.payload.doc.data())">
+      <ion-item *ngFor="let item of items">
         <h2>{{item.payload.doc.data().item}}</h2>
         <p>Expiration: {{item.payload.doc.data().expiration}}</p>
         <p>Location: {{item.payload.doc.data().location}}</p>
-        <button ion-button clear item-end>Details</button>
+        <button ion-button icon-end clear item-end color="fridge" (click)="viewDetails(item.payload.doc.id,item.payload.doc.data())">
+          <ion-icon name="information-circle"></ion-icon>
+        </button>
       </ion-item>
     </ion-list>
 </ion-content>
 
 <ion-footer>
-  <button ion-button block color="primary" (click)="goToAddPage()">
+  <button ion-button block color="add" (click)="goToAddPage()">
     Add
   </button>
 

@@ -51,7 +51,7 @@ export class LoginPage {
   tryLogin(value){
     this.authService.doLogin(value)
     .then(res => {
-      this.navCtrl.push(Fridge);
+      this.navCtrl.setRoot(Fridge);
     }, err => {
       this.errorMessage = err.message;
     })

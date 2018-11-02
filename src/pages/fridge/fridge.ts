@@ -4,6 +4,7 @@ import { NavController } from 'ionic-angular';
 import { FridgeDetails } from '../fridgeDetails/fridgeDetails';
 import { AddToFridge } from '../addToFridge/addToFridge';
 import { ShoppingList } from '../shopping_list/shopping_list';
+import { LoginPage } from '../login/login';
 
 import { FirebaseService } from '../../services/firebase.service';
 
@@ -51,5 +52,9 @@ export class Fridge {
 	 goToAddPage(){
 		 this.navCtrl.push(AddToFridge)
 	 }
+
+   logOut(){
+     this.navCtrl.setRoot(LoginPage)
+   }
 
 }
