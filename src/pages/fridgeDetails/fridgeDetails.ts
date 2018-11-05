@@ -26,6 +26,7 @@ export class FridgeDetails {
     this.getData()
   }
 
+
   getData(){
     this.item = this.navParams.get('data');
     this.validations_form = this.formBuilder.group({
@@ -45,7 +46,7 @@ export class FridgeDetails {
       expiration: value.expiration,
       location: value.location
     }
-    this.firebaseService.updateFridgeItem(this.item.id,data)
+    this.firebaseService.updateFridgeItem(this.item.id, data)
     .then(
       res => {
         let toast = this.toastCtrl.create({

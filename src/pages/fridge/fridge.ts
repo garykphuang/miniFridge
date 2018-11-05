@@ -21,10 +21,11 @@ export class Fridge {
    constructor(public navCtrl 	: NavController,
 		     			 public firebaseService: FirebaseService) {}
 
+   items: any
+
 	 ionViewWillEnter(){
 		 this.getData();
 	 }
-
 
 	 getData(){
 		 this.firebaseService.getFridgeItems()

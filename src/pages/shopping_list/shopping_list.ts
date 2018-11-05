@@ -20,6 +20,8 @@ export class ShoppingList {
 	 constructor(public navCtrl 	: NavController,
 		     			 public firebaseService: FirebaseService) {}
 
+	 items: any
+
 	 ionViewWillEnter(){
 		 this.getData();
 	 }
