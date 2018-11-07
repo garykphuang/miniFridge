@@ -22,17 +22,21 @@
 
 <ion-content padding>
     <ion-list>
-      <ion-item *ngFor="let item of items">
-        <h2>{{item.payload.doc.data().item}}</h2>
-        <p>Expiration: {{item.payload.doc.data().expiration}}</p>
-        <p>Location: {{item.payload.doc.data().location}}</p>
-        <button ion-button icon-end clear item-end color="fridge" (click)="viewDetails(item.payload.doc.id,item.payload.doc.data())">
-          <ion-icon name="information-circle"></ion-icon>
-        </button>
-        <button ion-button icon-only icon-end item-end clear>
-          <ion-icon name="trash" color="fridge"></ion-icon>
-        </button>
-      </ion-item>
+      <ion-item-sliding *ngFor="let item of items">
+        <ion-item>
+          <h2>{{item.payload.doc.data().item}}</h2>
+          <p>Expiration: {{item.payload.doc.data().expiration}}</p>
+          <p>Location: {{item.payload.doc.data().location}}</p>
+        </ion-item>
+
+        <ion-item-options side="left">
+          <button ion-button color="info" (click)="viewDetails(item.payload.doc.id,item.payload.doc.data())"> Details </button>
+        </ion-item-options>
+
+        <ion-item-options side="right">
+          <button ion-button color="delete"> Remove </button>
+        </ion-item-options>
+      </ion-item-sliding>
     </ion-list>
 </ion-content>
 
