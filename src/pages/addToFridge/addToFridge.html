@@ -6,27 +6,6 @@
   </ion-navbar>
 </ion-header>
 
-<!-- <ion-content padding>
-  <form [formGroup]="simple_form" >
-      <ion-item>
-        <ion-label floating >Item</ion-label>
-        <ion-input type="text" formControlName="item" class="form-controll" required></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label floating >Exp(mm/yy)</ion-label>
-        <ion-input type="text" formControlName="exp" class="form-controll" required></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label floating >Location</ion-label>
-        <ion-input type="text" formControlName="location" class="form-controll" required></ion-input>
-      </ion-item>
-
-      <button ion-button block color="secondary" [disabled]="!simple_form.valid" (click)="add(simple_form.value)" type="submit">Ok</button>
-    </form>
-</ion-content> -->
-
 <ion-content padding>
   <form class="new-user-form" [formGroup]="simple_form" (ngSubmit)="onSubmit(simple_form.value)">
     <ion-item>
@@ -34,13 +13,22 @@
       <ion-input type="text" formControlName="item" class="form-control" required></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label floating color="fridge">Expiration Date (MM/DD)</ion-label>
-      <ion-input type="text" formControlName="expiration" class="form-control" required></ion-input>
+      <ion-label floating color="fridge">Expiration Date</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY" min="2018" formControlName="expiration" class="form-control" required></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label floating color="fridge">Location</ion-label>
-      <ion-input type="text" formControlName="location" class="form-control" required></ion-input>
+      <ion-select formControlName="location" class="form-control" required>
+        <ion-option>Top Shelf</ion-option>
+        <ion-option>Middle Shelf 1</ion-option>
+        <ion-option>Middle Shelf 2</ion-option>
+        <ion-option>Middle Shelf 3</ion-option>
+        <ion-option>Bottom Shelf</ion-option>
+        <ion-option>Drawer 1</ion-option>
+        <ion-option>Drawer 2</ion-option>
+      </ion-select>
     </ion-item>
     <button class="form-action-button" ion-button block color="add" type="submit" [disabled]="!simple_form.valid">Add</button>
+    <!-- <button class="form-action-button" ion-button block color="add" type="submit" [disabled]="!simple_form.valid">Add</button> -->
   </form>
 </ion-content>

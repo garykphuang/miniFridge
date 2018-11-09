@@ -2,9 +2,7 @@
   <ion-navbar color="fridge">
 
     <ion-buttons left>
-      <button ion-button icon-only (click)="logOut()">
-        <ion-icon name="log-out"></ion-icon>
-      </button>
+      <button ion-button round (click)="logOut()"> Log Out </button>
     </ion-buttons>
 
     <ion-title text-center>
@@ -30,7 +28,7 @@
         </ion-item>
 
         <ion-item-options side="left">
-          <button ion-button color="info" (click)="viewDetails(item.payload.doc.id,item.payload.doc.data())"> Details </button>
+          <button ion-button color="info" (click)="viewDetails(item.payload.doc.id,item.payload.doc.data())"> Update </button>
         </ion-item-options>
 
         <ion-item-options side="right">

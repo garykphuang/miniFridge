@@ -14,7 +14,14 @@
     </ion-item>
     <ion-item>
       <ion-label floating color="shopping">Category</ion-label>
-      <ion-input type="text" formControlName="category" class="form-control" required></ion-input>
+      <ion-select formControlName="category" class="form-control" required>
+        <ion-option>Dairy</ion-option>
+        <ion-option>Fruits</ion-option>
+        <ion-option>Grains</ion-option>
+        <ion-option>Proteins</ion-option>
+        <ion-option>Vegetables</ion-option>
+        <ion-option>Other</ion-option>
+      </ion-select>
     </ion-item>
     <button class="form-action-button" ion-button block color ="add" type="submit" [disabled]="!validations_form.valid">Update</button>
   </form>

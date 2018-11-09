@@ -14,11 +14,19 @@
     </ion-item>
     <ion-item>
       <ion-label floating color="fridge">Expiration Date (MM/DD)</ion-label>
-      <ion-input type="text" formControlName="expiration" class="form-control" required></ion-input>
+      <ion-datetime displayFormat="MM/DD/YYYY" formControlName="expiration" class="form-control" required></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label floating color="fridge">Location</ion-label>
-      <ion-input type="text" formControlName="location" class="form-control" required></ion-input>
+      <ion-select formControlName="location" class="form-control" required>
+        <ion-option>Top Shelf</ion-option>
+        <ion-option>Middle Shelf 1</ion-option>
+        <ion-option>Middle Shelf 2</ion-option>
+        <ion-option>Middle Shelf 3</ion-option>
+        <ion-option>Bottom Shelf</ion-option>
+        <ion-option>Drawer 1</ion-option>
+        <ion-option>Drawer 2</ion-option>
+      </ion-select>
     </ion-item>
     <button class="form-action-button" ion-button block color ="add" type="submit" [disabled]="!validations_form.valid">Update</button>
   </form>

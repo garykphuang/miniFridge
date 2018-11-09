@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 
 import { FridgeDetails } from '../fridgeDetails/fridgeDetails';
 import { AddToFridge } from '../addToFridge/addToFridge';
@@ -19,7 +19,8 @@ export interface Config {
 export class Fridge {
 
    constructor(public navCtrl 	: NavController,
-		     			 public firebaseService: FirebaseService) {}
+		     			 public firebaseService: FirebaseService,
+               private alertCtrl: AlertController) {}
 
    items: any
 
@@ -55,8 +56,27 @@ export class Fridge {
 		 this.navCtrl.push(AddToFridge)
 	 }
 
-   logOut(){
-     this.navCtrl.setRoot(LoginPage)
-   }
+   logOut() {
+     let alert = this.alertCtrl.create({
+       title: 'Log Out?',
+       message: 'Are you sure you want to log out?',
+       buttons: [
+         {
+           text: 'Cancel',
+           role: 'cancel',
+           handler: () => {
+             console.log('Cancel clicked');
+           }
+         },
+         {
+           text: 'Log Out',
+           handler: () => {
+             this.navCtrl.setRoot(LoginPage);
+           }
+         }
+       ]
+     });
+  alert.present();
+}
 
 }
