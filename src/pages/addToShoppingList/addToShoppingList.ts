@@ -27,7 +27,7 @@ export class AddToShoppingList {
   getData(){
     this.simple_form = this.formBuilder.group({
       item: new FormControl('', Validators.required),
-      category: new FormControl('', Validators.required),
+      category: new FormControl('')
     });
   }
 

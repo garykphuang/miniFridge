@@ -10,7 +10,7 @@
   <form class="new-user-form" [formGroup]="simple_form" (ngSubmit)="onSubmit(simple_form.value)">
     <ion-item>
       <ion-label floating color="fridge">Item</ion-label>
-      <ion-input type="text" formControlName="item" class="form-control" required></ion-input>
+      <ion-input type="text" formControlName="item" [(ngModel)]="item" class="form-control" required></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating color="fridge">Expiration Date</ion-label>
@@ -18,7 +18,7 @@
     </ion-item>
     <ion-item>
       <ion-label floating color="fridge">Location</ion-label>
-      <ion-select formControlName="location" class="form-control">
+      <ion-select formControlName="location" class="form-control" >
         <ion-option>Top Shelf</ion-option>
         <ion-option>Middle Shelf 1</ion-option>
         <ion-option>Middle Shelf 2</ion-option>
@@ -29,6 +29,5 @@
       </ion-select>
     </ion-item>
     <button class="form-action-button" ion-button block color="add" type="submit" [disabled]="!simple_form.valid">Add</button>
-    <!-- <button class="form-action-button" ion-button block color="add" type="submit" [disabled]="!simple_form.valid">Add</button> -->
   </form>
 </ion-content>

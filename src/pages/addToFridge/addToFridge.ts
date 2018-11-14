@@ -27,8 +27,8 @@ export class AddToFridge {
   getData(){
     this.simple_form = this.formBuilder.group({
       item: new FormControl('', Validators.required),
-      expiration: new FormControl('', Validators.required),
-      location: new FormControl('', Validators.required)
+      expiration: new FormControl(''),
+      location: new FormControl('')
     });
   }
 

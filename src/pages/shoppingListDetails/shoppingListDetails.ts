@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ViewController, ToastController, NavParams, AlertController } from 'ionic-angular';
+import { ViewController, ToastController, NavParams} from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { FirebaseService } from '../../services/firebase.service';
 
@@ -15,7 +15,6 @@ export class ShoppingListDetails {
 
   constructor(
     private navParams: NavParams,
-    private alertCtrl: AlertController,
     public formBuilder: FormBuilder,
     private viewCtrl: ViewController,
     private toastCtrl: ToastController,
@@ -59,28 +58,5 @@ export class ShoppingListDetails {
     })
   }
 
-  // delete() {
-  //   let confirm = this.alertCtrl.create({
-  //     title: 'Confirm',
-  //     message: 'Do you want to delete ' + this.item.item + '?',
-  //     buttons: [
-  //       {
-  //         text: 'No',
-  //         handler: () => {}
-  //       },
-  //       {
-  //         text: 'Yes',
-  //         handler: () => {
-  //           this.firebaseService.deleteFridgeItem(this.id)
-  //           .then(
-  //             res => this.viewCtrl.dismiss(),
-  //             err => console.log(err)
-  //           )
-  //         }
-  //       }
-  //     ]
-  //   });
-  //   confirm.present();
-  // }
 
 }
