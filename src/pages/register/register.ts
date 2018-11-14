@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ToastController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+
+import { Fridge } from '../fridge/fridge';
 
 @Component({
   selector: 'page-register',
@@ -27,6 +29,7 @@ export class RegisterPage {
   constructor(
     private navCtrl: NavController,
     private authService: AuthService,
+    private toastCtrl: ToastController,
     private formBuilder: FormBuilder
   ) {}
 
@@ -46,9 +49,14 @@ export class RegisterPage {
   tryRegister(value){
     this.authService.doRegister(value)
      .then(res => {
+       this.navCtrl.setRoot(Fridge)
        console.log(res);
-       this.errorMessage = "";
-       this.successMessage = "Your account has been created. Please log in.";
+       let toast = this.toastCtrl.create({
+         message: 'Your account has been created and you have been logged in',
+         duration: 3000
+       });
+     toast.present();
+     this.authService.doLogin(value)
      }, err => {
        console.log(err);
        this.errorMessage = err.message;
