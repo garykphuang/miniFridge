@@ -41,4 +41,8 @@ export class AuthService {
       }
     })
   }
+
+  resetPassword(value){
+    return firebase.auth().sendPasswordResetEmail(value.email);
+  }
 }

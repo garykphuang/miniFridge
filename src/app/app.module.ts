@@ -10,6 +10,7 @@ import { AddToFridge } from '../pages/addToFridge/addToFridge';
 import { AddToShoppingList } from '../pages/addToShoppingList/addToShoppingList';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
+import { ResetPasswordPage } from '../pages/reset-password/reset-password';
 import { FridgeDetails } from '../pages/fridgeDetails/fridgeDetails';
 import { ShoppingListDetails } from '../pages/shoppingListDetails/shoppingListDetails';
 
@@ -34,6 +35,7 @@ import { environment } from '../environment/environment';
     AddToShoppingList,
     LoginPage,
     RegisterPage,
+    ResetPasswordPage,
     ShoppingListDetails,
     FridgeDetails
   ],
@@ -55,6 +57,7 @@ import { environment } from '../environment/environment';
     AddToShoppingList,
     LoginPage,
     RegisterPage,
+    ResetPasswordPage,
     ShoppingListDetails,
     FridgeDetails
   ],

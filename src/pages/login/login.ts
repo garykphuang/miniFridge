@@ -4,6 +4,7 @@ import { NavController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
 import { RegisterPage } from '../register/register';
+import { ResetPasswordPage } from '../reset-password/reset-password';
 import { Fridge } from '../fridge/fridge';
 
 import { AuthService } from '../../services/auth.service';
@@ -60,5 +61,10 @@ export class LoginPage {
   goRegisterPage(){
     this.navCtrl.push(RegisterPage);
   }
+
+  goResetPasswordPage(){
+    this.navCtrl.push(ResetPasswordPage);
+  }
+
 
 }
