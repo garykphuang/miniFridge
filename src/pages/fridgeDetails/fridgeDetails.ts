@@ -11,11 +11,12 @@ export class FridgeDetails {
 
   validations_form: FormGroup;
   item: any;
+  id: any;
 
   constructor(
     private navParams: NavParams,
     private alertCtrl: AlertController,
-    public formBuilder: FormBuilder,
+    private formBuilder: FormBuilder,
     private viewCtrl: ViewController,
     private toastCtrl: ToastController,
     private firebaseService: FirebaseService
@@ -29,6 +30,7 @@ export class FridgeDetails {
 
   getData(){
     this.item = this.navParams.get('data');
+    this.id = this.navParams.get('id');
     this.validations_form = this.formBuilder.group({
       item: new FormControl(this.item.item, Validators.required),
       expiration: new FormControl(this.item.expiration, Validators.required),
@@ -46,7 +48,7 @@ export class FridgeDetails {
       expiration: value.expiration,
       location: value.location
     }
-    this.firebaseService.updateFridgeItem(this.item.id, data)
+    this.firebaseService.updateFridgeItem(this.id, data)
     .then(
       res => {
         let toast = this.toastCtrl.create({
@@ -60,28 +62,28 @@ export class FridgeDetails {
     })
   }
 
-  delete() {
-    let confirm = this.alertCtrl.create({
-      title: 'Confirm',
-      message: 'Do you want to delete ' + this.item.item + '?',
-      buttons: [
-        {
-          text: 'No',
-          handler: () => {}
-        },
-        {
-          text: 'Yes',
-          handler: () => {
-            this.firebaseService.deleteFridgeItem(this.item.id)
-            .then(
-              res => this.viewCtrl.dismiss(),
-              err => console.log(err)
-            )
-          }
-        }
-      ]
-    });
-    confirm.present();
-  }
+  // delete() {
+  //   let confirm = this.alertCtrl.create({
+  //     title: 'Confirm',
+  //     message: 'Do you want to delete ' + this.item.item + '?',
+  //     buttons: [
+  //       {
+  //         text: 'No',
+  //         handler: () => {}
+  //       },
+  //       {
+  //         text: 'Yes',
+  //         handler: () => {
+  //           this.firebaseService.deleteFridgeItem(this.id)
+  //           .then(
+  //             res => this.viewCtrl.dismiss(),
+  //             err => console.log(err)
+  //           )
+  //         }
+  //       }
+  //     ]
+  //   });
+  //   confirm.present();
+  // }
 
 }

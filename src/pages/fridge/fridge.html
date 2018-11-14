@@ -32,7 +32,7 @@
         </ion-item-options>
 
         <ion-item-options side="right">
-          <button ion-button color="delete"> Remove </button>
+          <button ion-button color="delete" (click)="delete(item.payload.doc.id)"> Remove </button>
         </ion-item-options>
       </ion-item-sliding>
     </ion-list>

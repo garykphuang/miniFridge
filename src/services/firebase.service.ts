@@ -43,7 +43,9 @@ export class FirebaseService {
     updateFridgeItem(itemKey, value){
       return new Promise<any>((resolve, reject) => {
         let currentUser = firebase.auth().currentUser;
-      this.afs.collection('people').doc(currentUser.uid).collection('fridgeItems').doc(itemKey).set(value)
+        console.log(itemKey);
+        console.log(value);
+        this.afs.collection('people').doc(currentUser.uid).collection('fridgeItems').doc(itemKey).set(value)
         .then(
           res => resolve(res),
           err => reject(err)
@@ -101,6 +103,20 @@ export class FirebaseService {
       return new Promise<any>((resolve, reject) => {
         let currentUser = firebase.auth().currentUser;
         this.afs.collection('people').doc(currentUser.uid).collection('shoppingListItems').doc(itemKey).delete()
+        .then(
+          res => resolve(res),
+          err => reject(err)
+        )
+      })
+    }
+
+    moveToFridge(itemKey, value){
+      this.deleteShoppingListItem(itemKey);
+      return new Promise<any>((resolve, reject) => {
+        let currentUser = firebase.auth().currentUser;
+      this.afs.collection('people').doc(currentUser.uid).collection('fridgeItems').add({
+          item: value.item
+        })
         .then(
           res => resolve(res),
           err => reject(err)

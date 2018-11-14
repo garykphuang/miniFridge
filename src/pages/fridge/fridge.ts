@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
+import { NavController, AlertController, ViewController, ToastController } from 'ionic-angular';
 
 import { FridgeDetails } from '../fridgeDetails/fridgeDetails';
 import { AddToFridge } from '../addToFridge/addToFridge';
@@ -20,7 +20,9 @@ export class Fridge {
 
    constructor(public navCtrl 	: NavController,
 		     			 public firebaseService: FirebaseService,
-               private alertCtrl: AlertController) {}
+               private viewCtrl: ViewController,
+               private alertCtrl: AlertController,
+               public toastCtrl: ToastController) {}
 
    items: any
 
@@ -44,7 +46,8 @@ export class Fridge {
 			 location: item.location
 		 }
 		 this.navCtrl.push(FridgeDetails, {
-			 data: data
+			 data: data,
+       id: id
 		 })
 	 }
 
@@ -55,6 +58,37 @@ export class Fridge {
 	 goToAddPage(){
 		 this.navCtrl.push(AddToFridge)
 	 }
+
+   delete(id) {
+     let confirm = this.alertCtrl.create({
+       title: 'Confirm',
+       message: 'Do you want to delete this item?',
+       buttons: [
+         {
+           text: 'No',
+           handler: () => {}
+         },
+         {
+           text: 'Yes',
+           handler: () => {
+             this.firebaseService.deleteFridgeItem(id)
+             .then(
+               res => {
+                 let toast = this.toastCtrl.create({
+                   message: 'Item was deleted successfully',
+                   duration: 3000
+                 });
+                 this.ionViewWillEnter();
+                 toast.present();
+               },
+               err => console.log(err)
+             )
+           }
+         }
+       ]
+     });
+     confirm.present();
+   }
 
    logOut() {
      let alert = this.alertCtrl.create({

@@ -11,6 +11,7 @@ export class ShoppingListDetails {
 
   validations_form: FormGroup;
   item: any;
+  id: any;
 
   constructor(
     private navParams: NavParams,
@@ -28,6 +29,7 @@ export class ShoppingListDetails {
 
   getData(){
     this.item = this.navParams.get('data');
+    this.id = this.navParams.get('id')
     this.validations_form = this.formBuilder.group({
       item: new FormControl(this.item.item, Validators.required),
       category: new FormControl(this.item.category, Validators.required)
@@ -43,7 +45,7 @@ export class ShoppingListDetails {
       item: value.item,
       category: value.category
     }
-    this.firebaseService.updateFridgeItem(this.item.id,data)
+    this.firebaseService.updateShoppingListItem(this.id, data)
     .then(
       res => {
         let toast = this.toastCtrl.create({
@@ -57,28 +59,28 @@ export class ShoppingListDetails {
     })
   }
 
-  delete() {
-    let confirm = this.alertCtrl.create({
-      title: 'Confirm',
-      message: 'Do you want to delete ' + this.item.item + '?',
-      buttons: [
-        {
-          text: 'No',
-          handler: () => {}
-        },
-        {
-          text: 'Yes',
-          handler: () => {
-            this.firebaseService.deleteFridgeItem(this.item.id)
-            .then(
-              res => this.viewCtrl.dismiss(),
-              err => console.log(err)
-            )
-          }
-        }
-      ]
-    });
-    confirm.present();
-  }
+  // delete() {
+  //   let confirm = this.alertCtrl.create({
+  //     title: 'Confirm',
+  //     message: 'Do you want to delete ' + this.item.item + '?',
+  //     buttons: [
+  //       {
+  //         text: 'No',
+  //         handler: () => {}
+  //       },
+  //       {
+  //         text: 'Yes',
+  //         handler: () => {
+  //           this.firebaseService.deleteFridgeItem(this.id)
+  //           .then(
+  //             res => this.viewCtrl.dismiss(),
+  //             err => console.log(err)
+  //           )
+  //         }
+  //       }
+  //     ]
+  //   });
+  //   confirm.present();
+  // }
 
 }
