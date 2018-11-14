@@ -113,4 +113,10 @@ export class Fridge {
   alert.present();
 }
 
+  reOrderItems(indexes){
+    let element = this.items[indexes.from];
+    this.items.splice(indexes.from, 1);
+    this.items.splice(indexes.to, 0, element);
+}
+
 }
