@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, ViewController, ToastController } from 'ionic-angular';
+import { NavController, AlertController, ToastController } from 'ionic-angular';
 
 import { ShoppingListDetails } from '../shoppingListDetails/shoppingListDetails';
 import { AddToShoppingList } from '../addToShoppingList/addToShoppingList';
@@ -19,7 +19,6 @@ export class ShoppingList {
 
 	 constructor(public navCtrl 	: NavController,
 		     			 public firebaseService: FirebaseService,
-							 private viewCtrl: ViewController,
 							 private alertCtrl: AlertController,
 						 	 public toastCtrl: ToastController) {}
 
@@ -114,6 +113,12 @@ export class ShoppingList {
 	 goToAddPage(){
 		 this.navCtrl.push(AddToShoppingList)
 	 }
+
+	 reOrderItems(indexes){
+		 let element = this.items[indexes.from];
+		 this.items.splice(indexes.from, 1);
+		 this.items.splice(indexes.to, 0, element);
+ }
 
 
 }

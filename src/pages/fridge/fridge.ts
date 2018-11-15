@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, ViewController, ToastController } from 'ionic-angular';
+import { NavController, AlertController, ToastController } from 'ionic-angular';
 
 import { FridgeDetails } from '../fridgeDetails/fridgeDetails';
 import { AddToFridge } from '../addToFridge/addToFridge';
@@ -20,7 +20,6 @@ export class Fridge {
 
    constructor(public navCtrl 	: NavController,
 		     			 public firebaseService: FirebaseService,
-               private viewCtrl: ViewController,
                private alertCtrl: AlertController,
                public toastCtrl: ToastController) {}
 

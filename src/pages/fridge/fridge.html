@@ -19,7 +19,7 @@
 </ion-header>
 
 <ion-content padding>
-    <ion-list (ionItemReorder)="reOrderItems($event)">
+    <ion-list reorder="true" (ionItemReorder)="reOrderItems($event)">
       <ion-item-sliding *ngFor="let item of items">
         <ion-item>
           <h2>{{item.payload.doc.data().item}}</h2>

@@ -1,11 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
-
 import { AuthService } from '../../services/auth.service';
-
-
 
 @Component({
   selector: 'page-register',
