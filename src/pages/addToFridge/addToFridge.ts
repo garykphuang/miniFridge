@@ -27,6 +27,7 @@ export class AddToFridge {
   getData(){
     this.simple_form = this.formBuilder.group({
       item: new FormControl('', Validators.required),
+      quantity: new FormControl(''),
       expiration: new FormControl(''),
       location: new FormControl('')
     });
@@ -35,6 +36,7 @@ export class AddToFridge {
   onSubmit(value){
     let data = {
       item: value.item,
+      quantity: value.quantity,
       expiration: value.expiration,
       location: value.location
     }

@@ -40,6 +40,7 @@ export class ShoppingList {
 		 // debugger
 		 let data = {
 			 item: item.item,
+			 quantity: item.quantity,
 			 category: item.category
 		 }
 		 this.navCtrl.push(ShoppingListDetails, {

@@ -8,6 +8,8 @@ import { LoginPage } from '../login/login';
 
 import { FirebaseService } from '../../services/firebase.service';
 
+import moment from 'moment';
+
 export interface Config {
 }
 
@@ -33,14 +35,29 @@ export class Fridge {
 		 this.firebaseService.getFridgeItems()
 		 .then(fridgeItems => {
 			 this.items = fridgeItems;
+       for (let item of this.items){
+         item.daysUntil = this.checkExpiration(item.payload.doc.data().expiration)
+       }
 		 })
 	 }
 
+   checkExpiration(expirationDate){
+     let daysUntilExpiration = "";
+     if (moment(expirationDate).isAfter()){
+       daysUntilExpiration = "Expiring in " + moment(expirationDate).diff(moment(), 'days') + " days";
+     } if (moment(expirationDate).isBefore()) {
+       daysUntilExpiration = "Expired by " + moment().diff(expirationDate, 'days') + " days";
+     } if (moment(expirationDate).isSame()) {
+       daysUntilExpiration = "Expiring today";
+     }
+     return daysUntilExpiration;
+   }
 
 	 viewDetails(id, item){
 		 // debugger
 		 let data = {
 			 item: item.item,
+       quantity: item.quantity,
 			 expiration: item.expiration,
 			 location: item.location
 		 }

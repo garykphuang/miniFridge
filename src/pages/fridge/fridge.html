@@ -23,8 +23,9 @@
       <ion-item-sliding *ngFor="let item of items">
         <ion-item (click)="viewDetails(item.payload.doc.id,item.payload.doc.data())">
           <h2>{{item.payload.doc.data().item}}</h2>
-          <p>Expiration: {{item.payload.doc.data().expiration}}</p>
-          <p>Location: {{item.payload.doc.data().location}}</p>
+          <p>{{item.payload.doc.data().quantity}}</p>
+          <p>{{item.daysUntil}}</p>
+          <p>{{item.payload.doc.data().location}}</p>
         </ion-item>
 
         <ion-item-options side="left">

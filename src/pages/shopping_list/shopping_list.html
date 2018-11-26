@@ -12,7 +12,8 @@
       <ion-item-sliding *ngFor="let item of items">
         <ion-item (click)="viewDetails(item.payload.doc.id,item.payload.doc.data())">
           <h2>{{item.payload.doc.data().item}}</h2>
-          <p>Category: {{item.payload.doc.data().category}}</p>
+          <p>{{item.payload.doc.data().quantity}}</p>
+          <p>{{item.payload.doc.data().category}}</p>
         </ion-item>
 
         <ion-item-options side="left">

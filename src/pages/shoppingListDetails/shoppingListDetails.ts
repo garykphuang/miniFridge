@@ -31,7 +31,8 @@ export class ShoppingListDetails {
     this.id = this.navParams.get('id')
     this.validations_form = this.formBuilder.group({
       item: new FormControl(this.item.item, Validators.required),
-      category: new FormControl(this.item.category, Validators.required)
+      quantity: new FormControl(this.item.quantity),
+      category: new FormControl(this.item.category)
     });
   }
 
@@ -42,6 +43,7 @@ export class ShoppingListDetails {
   onSubmit(value){
     let data = {
       item: value.item,
+      quantity: value.quantity,
       category: value.category
     }
     this.firebaseService.updateShoppingListItem(this.id, data)
