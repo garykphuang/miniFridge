@@ -35,11 +35,24 @@ export class Fridge {
 		 this.firebaseService.getFridgeItems()
 		 .then(fridgeItems => {
 			 this.items = fridgeItems;
+       console.log(this.items);
        for (let item of this.items){
          item.daysUntil = this.checkExpiration(item.payload.doc.data().expiration)
        }
+       this.items.sort(this.sortList);
+       console.log(this.items);
 		 })
 	 }
+
+  sortList(a, b) {
+    if (a > b) {
+      return 1;
+    } else if (b > a) {
+      return -1;
+    } else {
+      return 0;
+    }
+  }
 
    checkExpiration(expirationDate){
      let daysUntilExpiration = "";
