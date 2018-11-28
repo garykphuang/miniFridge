@@ -35,19 +35,29 @@ export class Fridge {
 		 this.firebaseService.getFridgeItems()
 		 .then(fridgeItems => {
 			 this.items = fridgeItems;
-       console.log(this.items);
        for (let item of this.items){
-         item.daysUntil = this.checkExpiration(item.payload.doc.data().expiration)
+         item.daysUntil = this.checkExpiration(item.payload.doc.data().expiration);
+         item.name = item.payload.doc.data().item;
+         item.expiration = item.payload.doc.data().expiration;
        }
-       this.items.sort(this.sortList);
-       console.log(this.items);
+       this.items.sort(this.sortExpiration);
 		 })
 	 }
 
-  sortList(a, b) {
-    if (a > b) {
+  sortName(a, b) {
+    if (a.name > b.name) {
       return 1;
-    } else if (b > a) {
+    } else if (b.name > a.name) {
+      return -1;
+    } else {
+      return 0;
+    }
+  }
+
+  sortExpiration(a, b) {
+    if (a.expiration > b.expiration) {
+      return 1;
+    } else if (b.expiration > a.expiration) {
       return -1;
     } else {
       return 0;
