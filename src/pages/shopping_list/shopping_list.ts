@@ -33,7 +33,21 @@ export class ShoppingList {
 		 this.firebaseService.getShoppingListItems()
 		 .then(shoppingListItems => {
 			 this.items = shoppingListItems;
+			 for (let item of this.items){
+				 item.category = item.payload.doc.data().category;
+			 }
+			 this.items.sort(this.sortCategory);
 		 })
+	 }
+
+	 sortCategory(a, b) {
+		 if (a.category > b.category) {
+			 return 1;
+		 } else if (b.category > a.category) {
+			 return -1;
+		 } else {
+			 return 0;
+		 }
 	 }
 
 	 viewDetails(id, item){
