@@ -32,6 +32,7 @@ export class FridgeDetails {
     this.id = this.navParams.get('id');
     this.validations_form = this.formBuilder.group({
       item: new FormControl(this.item.item, Validators.required),
+      quantity: new FormControl(this.item.quantity),
       expiration: new FormControl(this.item.expiration),
       location: new FormControl(this.item.location)
     });
@@ -44,6 +45,7 @@ export class FridgeDetails {
   onSubmit(value){
     let data = {
       item: value.item,
+      quantity: value.quantity,
       expiration: value.expiration,
       location: value.location
     }

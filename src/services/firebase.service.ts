@@ -20,6 +20,7 @@ export class FirebaseService {
         let currentUser = firebase.auth().currentUser;
       this.afs.collection('people').doc(currentUser.uid).collection('fridgeItems').add({
           item: value.item,
+          quantity: value.quantity,
           expiration: value.expiration,
           location: value.location
         })
@@ -69,6 +70,7 @@ export class FirebaseService {
         let currentUser = firebase.auth().currentUser;
       this.afs.collection('people').doc(currentUser.uid).collection('shoppingListItems').add({
           item: value.item,
+          quantity: value.quantity,
           category: value.category
         })
         .then(
@@ -115,7 +117,8 @@ export class FirebaseService {
       return new Promise<any>((resolve, reject) => {
         let currentUser = firebase.auth().currentUser;
       this.afs.collection('people').doc(currentUser.uid).collection('fridgeItems').add({
-          item: value.item
+          item: value.item,
+          quantity: value.quantity
         })
         .then(
           res => resolve(res),
@@ -129,14 +132,5 @@ export class FirebaseService {
       // debugger;
       this.snapshotChangesSubscription.unsubscribe();
     }
-
-    // getFridgeItems(){
-    //   return new Promise<any>((resolve, reject) => {
-    //     this.snapshotChangesSubscription = this.afs.collection('fridgeItems').snapshotChanges()
-    //     .subscribe(snapshots => {
-    //       resolve(snapshots);
-    //     })
-    //   });
-    // }
 
 }

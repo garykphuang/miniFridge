@@ -22,7 +22,7 @@ export class RegisterPage {
    ],
    'password': [
      { type: 'required', message: 'Password is required.' },
-     { type: 'minlength', message: 'Password must be at least 5 characters long.' }
+     { type: 'minlength', message: 'Password must be at least 6 characters long.' }
    ]
  };
 
