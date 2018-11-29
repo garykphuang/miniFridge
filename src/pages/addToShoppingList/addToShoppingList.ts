@@ -28,6 +28,7 @@ export class AddToShoppingList {
     this.simple_form = this.formBuilder.group({
       item: new FormControl('', Validators.required),
       quantity: new FormControl(''),
+      unit: new FormControl(''),
       category: new FormControl('')
     });
   }
@@ -36,6 +37,7 @@ export class AddToShoppingList {
     let data = {
       item: value.item,
       quantity: value.quantity,
+      unit: value.unit,
       category: value.category
     }
     this.firebaseService.createShoppingListItems(data)

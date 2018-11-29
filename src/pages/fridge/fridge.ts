@@ -69,7 +69,7 @@ export class Fridge {
      if (moment(expirationDate).isAfter()){
        daysUntilExpiration = "Expiring in " + moment(expirationDate).diff(moment(), 'days') + " days";
      } if (moment(expirationDate).isBefore()) {
-       daysUntilExpiration = "Expired by " + moment().diff(expirationDate, 'days') + " days";
+       daysUntilExpiration = "Expired " + moment().diff(expirationDate, 'days') + " days ago";
      } if (moment(expirationDate).isSame()) {
        daysUntilExpiration = "Expiring today";
      }
@@ -81,6 +81,7 @@ export class Fridge {
 		 let data = {
 			 item: item.item,
        quantity: item.quantity,
+       unit: item.unit,
 			 expiration: item.expiration,
 			 location: item.location
 		 }
