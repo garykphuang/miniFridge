@@ -39,6 +39,8 @@ export class Fridge {
          item.daysUntil = this.checkExpiration(item.payload.doc.data().expiration);
          item.name = item.payload.doc.data().item;
          item.expiration = item.payload.doc.data().expiration;
+         console.log(item.name);
+         console.log(item.expiration);
        }
        this.items.sort(this.sortExpiration);
 		 })
@@ -72,6 +74,8 @@ export class Fridge {
        daysUntilExpiration = "Expired " + moment().diff(expirationDate, 'days') + " days ago";
      } if (moment(expirationDate).isSame()) {
        daysUntilExpiration = "Expiring today";
+     } if (expirationDate == null) {
+       daysUntilExpiration = "";
      }
      return daysUntilExpiration;
    }
