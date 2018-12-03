@@ -10,6 +10,10 @@
     </ion-title>
 
     <ion-buttons end>
+      <button ion-button icon-only (click)="filter()">
+        <ion-icon name="funnel"></ion-icon>
+      </button>
+
       <button ion-button icon-only (click)="goToShoppingList()">
         <ion-icon name="cart"></ion-icon>
       </button>
@@ -22,7 +26,7 @@
     <ion-list>
       <ion-item-sliding *ngFor="let item of items">
         <ion-item (click)="viewDetails(item.payload.doc.id,item.payload.doc.data())">
-          <h2>{{item.payload.doc.data().item}}</h2>
+          <h2 ion-text color="login">{{item.payload.doc.data().item}}</h2>
           <p>{{item.payload.doc.data().quantity}}</p>
           <p>{{item.daysUntil}}</p>
           <p>{{item.payload.doc.data().location}}</p>

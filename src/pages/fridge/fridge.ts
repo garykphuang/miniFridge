@@ -40,9 +40,19 @@ export class Fridge {
          item.name = item.payload.doc.data().item;
          item.expiration = item.payload.doc.data().expiration;
        }
-       this.items.sort(this.sortExpiration);
+       this.items.sort(this.sortName);
 		 })
 	 }
+
+  sortItems(value) {
+    if (value === 'name'){
+      return this.sortName;
+    } if (value === 'expiration'){
+      return this.sortExpiration;
+    } if (value === 'location'){
+      return this.sortLocation;
+    }
+  }
 
   sortName(a, b) {
     if (a.name > b.name) {
@@ -62,6 +72,53 @@ export class Fridge {
     } else {
       return 0;
     }
+  }
+
+  sortLocation(a, b) {
+    if (a.location > b.location) {
+      return 1;
+    } else if (b.location > a.location) {
+      return -1;
+    } else {
+      return 0;
+    }
+  }
+
+  filter(){
+    let alert = this.alertCtrl.create({
+      title: 'Sort By',
+
+      inputs: [
+        {
+          type: 'radio',
+          label: 'Name',
+          value: 'name',
+        },
+        {
+          type: 'radio',
+          label: 'Expiration',
+          value: 'expiration'
+        },
+        {
+          type: 'radio',
+          label: 'Location',
+          value: 'location'
+        }
+      ],
+
+      buttons: [
+        {
+          text: 'Reset Sort',
+          role: 'Cancel',
+          handler: data => {
+            console.log('value passed:', data);
+            this.testRadioOpen = false;
+            this.testRadioResult = this.items.sort(this.sortItems(data));
+          }
+        }
+      ]
+    });
+    alert.present()
   }
 
    checkExpiration(expirationDate){
@@ -151,5 +208,6 @@ export class Fridge {
      });
   alert.present();
 }
+
 
 }
