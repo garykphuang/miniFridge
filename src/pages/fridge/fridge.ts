@@ -47,8 +47,7 @@ export class Fridge {
          item.daysUntil = this.checkExpiration(item.expiration);
          item.color = this.colorCode(item);
        }
-       this.items.sort(this.sortLocation);
-
+       this.items.sort(this.sortName);
 		 })
 	 }
 
@@ -82,6 +81,53 @@ export class Fridge {
     }
   }
 
+  sortItems(value) {
+    if (value === 'name'){
+      return this.sortName;
+    } if (value === 'expiration'){
+      return this.sortExpiration;
+    } if (value === 'location'){
+      return this.sortLocation;
+    }
+  }
+
+  filter(){
+    let alert = this.alertCtrl.create({
+      title: 'Sort By',
+
+      inputs: [
+        {
+          type: 'radio',
+          label: 'Name',
+          value: 'name',
+          checked: true
+        },
+        {
+          type: 'radio',
+          label: 'Expiration',
+          value: 'expiration'
+        },
+        {
+          type: 'radio',
+          label: 'Location',
+          value: 'location'
+        }
+      ],
+
+      buttons: [
+        {
+          text: 'Reset Sort',
+          role: 'Cancel',
+          handler: data => {
+            console.log('value passed:', data);
+            this.testRadioOpen = false;
+            this.testRadioResult = this.items.sort(this.sortItems(data));
+          }
+        }
+      ]
+    });
+    alert.present()
+  }
 
    checkExpiration(expirationDate){
      let daysUntilExpiration = "";
@@ -134,9 +180,12 @@ export class Fridge {
        return "good";
      } else if (exp < 4 && exp >= 0) {
        return "expiring";
-     } else {
+     } else if (exp < 0){
        return "bad";
+     } else {
+       return "none";
      }
+
    }
 
 
@@ -194,5 +243,6 @@ export class Fridge {
      });
   alert.present();
 }
+
 
 }
