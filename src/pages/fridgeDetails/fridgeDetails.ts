@@ -33,6 +33,7 @@ export class FridgeDetails {
     this.validations_form = this.formBuilder.group({
       item: new FormControl(this.item.item, Validators.required),
       quantity: new FormControl(this.item.quantity),
+      unit: new FormControl(this.item.unit),
       expiration: new FormControl(this.item.expiration),
       location: new FormControl(this.item.location)
     });
@@ -46,6 +47,7 @@ export class FridgeDetails {
     let data = {
       item: value.item,
       quantity: value.quantity,
+      unit: value.unit,
       expiration: value.expiration,
       location: value.location
     }

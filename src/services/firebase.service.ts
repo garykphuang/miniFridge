@@ -21,6 +21,7 @@ export class FirebaseService {
       this.afs.collection('people').doc(currentUser.uid).collection('fridgeItems').add({
           item: value.item,
           quantity: value.quantity,
+          unit: value.unit,
           expiration: value.expiration,
           location: value.location
         })
@@ -71,6 +72,7 @@ export class FirebaseService {
       this.afs.collection('people').doc(currentUser.uid).collection('shoppingListItems').add({
           item: value.item,
           quantity: value.quantity,
+          unit: value.unit,
           category: value.category
         })
         .then(
@@ -118,7 +120,8 @@ export class FirebaseService {
         let currentUser = firebase.auth().currentUser;
       this.afs.collection('people').doc(currentUser.uid).collection('fridgeItems').add({
           item: value.item,
-          quantity: value.quantity
+          quantity: value.quantity,
+          unit: value.unit
         })
         .then(
           res => resolve(res),

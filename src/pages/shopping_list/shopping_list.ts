@@ -55,6 +55,7 @@ export class ShoppingList {
 		 let data = {
 			 item: item.item,
 			 quantity: item.quantity,
+			 unit: item.unit,
 			 category: item.category
 		 }
 		 this.navCtrl.push(ShoppingListDetails, {
