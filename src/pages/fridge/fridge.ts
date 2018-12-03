@@ -31,6 +31,7 @@ export class Fridge {
 		 this.getData();
 	 }
 
+// call color-coding function in here
 	 getData(){
 		 this.firebaseService.getFridgeItems()
 		 .then(fridgeItems => {
@@ -39,6 +40,7 @@ export class Fridge {
          item.daysUntil = this.checkExpiration(item.payload.doc.data().expiration);
          item.name = item.payload.doc.data().item;
          item.expiration = item.payload.doc.data().expiration;
+         item.color = this.colorCode(item);
        }
        this.items.sort(this.sortExpiration);
 		 })
@@ -97,6 +99,22 @@ export class Fridge {
 	 goToAddPage(){
 		 this.navCtrl.push(AddToFridge)
 	 }
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~abigail~~~~~~~~~~~~
+   colorCode(thing){
+     let expD = thing.payload.doc.data().expiration;
+     let exp = moment(expD).diff(moment(), 'days');
+     // let exp = this.daysUntil;
+     if (exp > 4) {
+       return "good";
+     } else if (exp < 4 && exp >= 0) {
+       return "expiring";
+     } else {
+       return "bad";
+     }
+   }
+
+
 
    delete(id) {
      let confirm = this.alertCtrl.create({
