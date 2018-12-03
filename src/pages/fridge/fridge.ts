@@ -70,11 +70,14 @@ export class Fridge {
     }
   }
 
+  // THIS DOESN'T WORK :(((
   sortLocation(a, b) {
-    if (a.location > b.location) {
+    if (a.location === 'Top Shelf') {
+        return 1;
+    } else if  (a.location === 'Bottom Shelf') {
+        return -1;
+    } else if (a.location == null){
       return 1;
-    } else if (b.location > a.location) {
-      return -1;
     } else {
       return 0;
     }
@@ -99,6 +102,7 @@ export class Fridge {
           type: 'radio',
           label: 'Name',
           value: 'name',
+          checked: true
         },
         {
           type: 'radio',
