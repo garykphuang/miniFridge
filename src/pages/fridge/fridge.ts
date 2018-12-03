@@ -26,6 +26,8 @@ export class Fridge {
                public toastCtrl: ToastController) {}
 
    items: any
+   yesterday: any
+   tomorrow: any
 
 	 ionViewWillEnter(){
 		 this.getData();
@@ -35,14 +37,15 @@ export class Fridge {
 		 this.firebaseService.getFridgeItems()
 		 .then(fridgeItems => {
 			 this.items = fridgeItems;
+       this.yesterday = moment(moment()).subtract(1, 'days');
+       this.tomorrow = moment(moment()).add(1, 'days');
        for (let item of this.items){
-         item.daysUntil = this.checkExpiration(item.payload.doc.data().expiration);
          item.name = item.payload.doc.data().item;
          item.expiration = item.payload.doc.data().expiration;
-         console.log(item.name);
-         console.log(item.expiration);
+         item.daysUntil = this.checkExpiration(item.expiration);
        }
        this.items.sort(this.sortExpiration);
+
 		 })
 	 }
 
@@ -66,13 +69,19 @@ export class Fridge {
     }
   }
 
+
    checkExpiration(expirationDate){
      let daysUntilExpiration = "";
-     if (moment(expirationDate).isAfter()){
+     if (moment(expirationDate).isAfter(moment(), 'day')){
+       expirationDate = moment(expirationDate).add(1, 'days');
        daysUntilExpiration = "Expiring in " + moment(expirationDate).diff(moment(), 'days') + " days";
-     } if (moment(expirationDate).isBefore()) {
+     } if (moment(expirationDate).isBefore(moment(), 'day')) {
        daysUntilExpiration = "Expired " + moment().diff(expirationDate, 'days') + " days ago";
-     } if (moment(expirationDate).isSame()) {
+     } if (moment(expirationDate).isSame(this.yesterday, 'day')) {
+       daysUntilExpiration = "Expired yesterday";
+     } if (moment(expirationDate).isSame(this.tomorrow, 'day')) {
+       daysUntilExpiration = "Expiring tomorrow";
+     } if (moment(expirationDate).isSame(moment(), 'day')) {
        daysUntilExpiration = "Expiring today";
      } if (expirationDate == null) {
        daysUntilExpiration = "";
