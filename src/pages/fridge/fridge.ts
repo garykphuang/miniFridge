@@ -28,6 +28,8 @@ export class Fridge {
    items: any
    yesterday: any
    tomorrow: any
+   testRadioOpen: any
+   testRadioResult: any
 
 	 ionViewWillEnter(){
 		 this.getData();
