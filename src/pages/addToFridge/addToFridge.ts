@@ -28,6 +28,7 @@ export class AddToFridge {
     this.simple_form = this.formBuilder.group({
       item: new FormControl('', Validators.required),
       quantity: new FormControl(''),
+      unit: new FormControl(''),
       expiration: new FormControl(''),
       location: new FormControl('')
     });
@@ -37,6 +38,7 @@ export class AddToFridge {
     let data = {
       item: value.item,
       quantity: value.quantity,
+      unit: value.unit,
       expiration: value.expiration,
       location: value.location
     }

@@ -26,33 +26,29 @@ export class Fridge {
                public toastCtrl: ToastController) {}
 
    items: any
+   yesterday: any
+   tomorrow: any
 
 	 ionViewWillEnter(){
 		 this.getData();
 	 }
 
+// call color-coding function in here
 	 getData(){
 		 this.firebaseService.getFridgeItems()
 		 .then(fridgeItems => {
 			 this.items = fridgeItems;
+       this.yesterday = moment(moment()).subtract(1, 'days');
+       this.tomorrow = moment(moment()).add(1, 'days');
        for (let item of this.items){
-         item.daysUntil = this.checkExpiration(item.payload.doc.data().expiration);
          item.name = item.payload.doc.data().item;
          item.expiration = item.payload.doc.data().expiration;
+         item.daysUntil = this.checkExpiration(item.expiration);
+         item.color = this.colorCode(item);
        }
        this.items.sort(this.sortName);
 		 })
 	 }
-
-  sortItems(value) {
-    if (value === 'name'){
-      return this.sortName;
-    } if (value === 'expiration'){
-      return this.sortExpiration;
-    } if (value === 'location'){
-      return this.sortLocation;
-    }
-  }
 
   sortName(a, b) {
     if (a.name > b.name) {
@@ -81,6 +77,16 @@ export class Fridge {
       return -1;
     } else {
       return 0;
+    }
+  }
+
+  sortItems(value) {
+    if (value === 'name'){
+      return this.sortName;
+    } if (value === 'expiration'){
+      return this.sortExpiration;
+    } if (value === 'location'){
+      return this.sortLocation;
     }
   }
 
@@ -123,12 +129,19 @@ export class Fridge {
 
    checkExpiration(expirationDate){
      let daysUntilExpiration = "";
-     if (moment(expirationDate).isAfter()){
+     if (moment(expirationDate).isAfter(moment(), 'day')){
+       expirationDate = moment(expirationDate).add(1, 'days');
        daysUntilExpiration = "Expiring in " + moment(expirationDate).diff(moment(), 'days') + " days";
-     } if (moment(expirationDate).isBefore()) {
-       daysUntilExpiration = "Expired by " + moment().diff(expirationDate, 'days') + " days";
-     } if (moment(expirationDate).isSame()) {
+     } if (moment(expirationDate).isBefore(moment(), 'day')) {
+       daysUntilExpiration = "Expired " + moment().diff(expirationDate, 'days') + " days ago";
+     } if (moment(expirationDate).isSame(this.yesterday, 'day')) {
+       daysUntilExpiration = "Expired yesterday";
+     } if (moment(expirationDate).isSame(this.tomorrow, 'day')) {
+       daysUntilExpiration = "Expiring tomorrow";
+     } if (moment(expirationDate).isSame(moment(), 'day')) {
        daysUntilExpiration = "Expiring today";
+     } if (expirationDate == null) {
+       daysUntilExpiration = "";
      }
      return daysUntilExpiration;
    }
@@ -138,6 +151,7 @@ export class Fridge {
 		 let data = {
 			 item: item.item,
        quantity: item.quantity,
+       unit: item.unit,
 			 expiration: item.expiration,
 			 location: item.location
 		 }
@@ -154,6 +168,25 @@ export class Fridge {
 	 goToAddPage(){
 		 this.navCtrl.push(AddToFridge)
 	 }
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~abigail~~~~~~~~~~~~
+   colorCode(thing){
+     let expD = thing.payload.doc.data().expiration;
+     let exp = moment(expD).diff(moment(), 'days');
+     // let exp = this.daysUntil;
+     if (exp > 4) {
+       return "good";
+     } else if (exp < 4 && exp >= 0) {
+       return "expiring";
+     } else if (exp < 0){
+       return "bad";
+     } else {
+       return "none";
+     }
+
+   }
+
+
 
    delete(id) {
      let confirm = this.alertCtrl.create({

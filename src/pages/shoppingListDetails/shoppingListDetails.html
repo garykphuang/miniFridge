@@ -12,10 +12,22 @@
       <ion-label floating color="shopping">Item</ion-label>
       <ion-input type="text" formControlName="item" class="form-control" required></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label floating color="fridge">Quantity</ion-label>
-      <ion-input type="text" formControlName="quantity" class="form-control"></ion-input>
-    </ion-item>
+    <ion-grid>
+      <ion-row>
+        <ion-col width-50>
+          <ion-item>
+            <ion-label floating color="fridge">Quantity</ion-label>
+            <ion-input type="number" formControlName="quantity" class="form-control"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col width-50>
+          <ion-item>
+            <ion-label floating color="fridge">Unit</ion-label>
+            <ion-input type="text" formControlName="unit" class="form-control"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
     <ion-item>
       <ion-label floating color="shopping">Category</ion-label>
       <ion-select formControlName="category" class="form-control">
