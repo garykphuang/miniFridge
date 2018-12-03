@@ -43,10 +43,11 @@ export class Fridge {
        for (let item of this.items){
          item.name = item.payload.doc.data().item;
          item.expiration = item.payload.doc.data().expiration;
+         item.location = item.payload.doc.data().location;
          item.daysUntil = this.checkExpiration(item.expiration);
          item.color = this.colorCode(item);
        }
-       this.items.sort(this.sortExpiration);
+       this.items.sort(this.sortLocation);
 
 		 })
 	 }
@@ -65,6 +66,16 @@ export class Fridge {
     if (a.expiration > b.expiration) {
       return 1;
     } else if (b.expiration > a.expiration) {
+      return -1;
+    } else {
+      return 0;
+    }
+  }
+
+  sortLocation(a, b) {
+    if (a.location > b.Location) {
+      return 1;
+    } else if (b.location > a.location) {
       return -1;
     } else {
       return 0;
