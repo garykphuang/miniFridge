@@ -28,8 +28,8 @@ export class Fridge {
    items: any
    yesterday: any
    tomorrow: any
-   testRadioOpen: any
-   testRadioResult: any
+   filterRadioOpen: any
+   filterRadioResult: any
 
 	 ionViewWillEnter(){
 		 this.getData();
@@ -121,9 +121,8 @@ export class Fridge {
           text: 'Reset Sort',
           role: 'Cancel',
           handler: data => {
-            console.log('value passed:', data);
-            this.testRadioOpen = false;
-            this.testRadioResult = this.items.sort(this.sortItems(data));
+            this.filterRadioOpen = false;
+            this.filterRadioResult = this.items.sort(this.sortItems(data));
           }
         }
       ]
