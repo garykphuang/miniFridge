@@ -134,8 +134,8 @@ export class Fridge {
    checkExpiration(expirationDate){
      let daysUntilExpiration = "";
      if (moment(expirationDate).isAfter(moment(), 'day')){
-       expirationDate = moment(expirationDate).add(1, 'days');
-       daysUntilExpiration = "Expiring in " + moment(expirationDate).diff(moment(), 'days') + " days";
+       let plusOneExpirationDate = moment(expirationDate).add(1, 'days');
+       daysUntilExpiration = "Expiring in " + moment(plusOneExpirationDate).diff(moment(), 'days') + " days";
      } if (moment(expirationDate).isBefore(moment(), 'day')) {
        daysUntilExpiration = "Expired " + moment().diff(expirationDate, 'days') + " days ago";
      } if (moment(expirationDate).isSame(this.yesterday, 'day')) {
