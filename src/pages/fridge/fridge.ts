@@ -93,7 +93,7 @@ export class Fridge {
     }
   }
 
-  filter(){
+  fridgeFilter(){
     let alert = this.alertCtrl.create({
       title: 'Sort By',
 
@@ -118,10 +118,9 @@ export class Fridge {
 
       buttons: [
         {
-          text: 'Reset Sort',
+          text: 'Confirm',
           role: 'Cancel',
           handler: data => {
-            console.log('value passed:', data);
             this.testRadioOpen = false;
             this.testRadioResult = this.items.sort(this.sortItems(data));
           }

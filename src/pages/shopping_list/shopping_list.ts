@@ -23,6 +23,8 @@ export class ShoppingList {
 						 	 public toastCtrl: ToastController) {}
 
 	 items: any
+	 sortRadioOpen: any
+	 sortRadioResult: any
 
 	 ionViewWillEnter(){
 		 this.getData();
@@ -34,9 +36,10 @@ export class ShoppingList {
 		 .then(shoppingListItems => {
 			 this.items = shoppingListItems;
 			 for (let item of this.items){
+				 item.name = item.payload.doc.data().item;
 				 item.category = item.payload.doc.data().category;
 			 }
-			 this.items.sort(this.sortCategory);
+			 this.items.sort(this.sortName);
 		 })
 	 }
 
@@ -47,6 +50,24 @@ export class ShoppingList {
 			 return -1;
 		 } else {
 			 return 0;
+		 }
+	 }
+
+	 sortName(a, b) {
+		 if (a.name > b.name) {
+			 return 1;
+		 } else if (b.name > a.name) {
+			 return -1;
+		 } else {
+			 return 0;
+		 }
+	 }
+
+	 sortItems(value) {
+		 if (value === 'name'){
+			 return this.sortName;
+		 } if (value === 'category'){
+			 return this.sortCategory;
 		 }
 	 }
 
@@ -129,6 +150,39 @@ export class ShoppingList {
 	 goToAddPage(){
 		 this.navCtrl.push(AddToShoppingList)
 	 }
+
+	 shoppingListFilter(){
+     let alert = this.alertCtrl.create({
+       title: 'Sort By',
+
+       inputs: [
+         {
+           type: 'radio',
+           label: 'Name',
+           value: 'name',
+           checked: true
+         },
+         {
+           type: 'radio',
+           label: 'Category',
+           value: 'category'
+         }
+       ],
+
+       buttons: [
+         {
+           text: 'Confirm',
+           role: 'Cancel',
+           handler: data => {
+             this.sortRadioOpen = false;
+             this.sortRadioResult = this.items.sort(this.sortItems(data));
+           }
+         }
+       ]
+     });
+     alert.present()
+   }
+
 
 
 }
