@@ -28,8 +28,8 @@ export class Fridge {
    items: any
    yesterday: any
    tomorrow: any
-   testRadioOpen: any
-   testRadioResult: any
+   filterRadioOpen: any
+   filterRadioResult: any
 
 	 ionViewWillEnter(){
 		 this.getData();
@@ -121,8 +121,8 @@ export class Fridge {
           text: 'Confirm',
           role: 'Cancel',
           handler: data => {
-            this.testRadioOpen = false;
-            this.testRadioResult = this.items.sort(this.sortItems(data));
+            this.filterRadioOpen = false;
+            this.filterRadioResult = this.items.sort(this.sortItems(data));
           }
         }
       ]
@@ -133,8 +133,8 @@ export class Fridge {
    checkExpiration(expirationDate){
      let daysUntilExpiration = "";
      if (moment(expirationDate).isAfter(moment(), 'day')){
-       expirationDate = moment(expirationDate).add(1, 'days');
-       daysUntilExpiration = "Expiring in " + moment(expirationDate).diff(moment(), 'days') + " days";
+       let plusOneExpirationDate = moment(expirationDate).add(1, 'days');
+       daysUntilExpiration = "Expiring in " + moment(plusOneExpirationDate).diff(moment(), 'days') + " days";
      } if (moment(expirationDate).isBefore(moment(), 'day')) {
        daysUntilExpiration = "Expired " + moment().diff(expirationDate, 'days') + " days ago";
      } if (moment(expirationDate).isSame(this.yesterday, 'day')) {
