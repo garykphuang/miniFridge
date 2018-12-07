@@ -9,6 +9,10 @@
       Your Fridge
     </ion-title>
 
+    <ion-buttons end>
+      <button ion-button icon-only (click)="fridgeFilter()">
+        <ion-icon name="funnel"></ion-icon>
+      </button>
 
 
     <ion-buttons end>
@@ -28,6 +32,9 @@
           <p>{{item.payload.doc.data().quantity}} {{item.payload.doc.data().unit}}</p>
           <p ion-text color = "{{item.color}}">{{item.daysUntil}}</p>
           <p>{{item.payload.doc.data().location}}</p>
+          <button ion-button icon-end clear item-end>
+            <ion-icon name="information-circle" color="info"></ion-icon>
+          </button>
         </ion-item>
 
         <ion-item-options side="left">

@@ -119,7 +119,7 @@ export class Fridge {
     }
   }
 
-  filter(){
+  fridgeFilter(){
     let alert = this.alertCtrl.create({
       title: 'Sort By',
 
@@ -144,7 +144,7 @@ export class Fridge {
 
       buttons: [
         {
-          text: 'Reset Sort',
+          text: 'Confirm',
           role: 'Cancel',
           handler: data => {
             this.filterRadioOpen = false;
