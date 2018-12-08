@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import { FirebaseService } from '../../services/firebase.service';
 
 import { Fridge } from '../fridge/fridge';
 
@@ -29,6 +30,7 @@ export class RegisterPage {
   constructor(
     private navCtrl: NavController,
     private authService: AuthService,
+    private firebaseService: FirebaseService,
     private toastCtrl: ToastController,
     private formBuilder: FormBuilder
   ) {}
@@ -49,7 +51,8 @@ export class RegisterPage {
   tryRegister(value){
     this.authService.doRegister(value)
      .then(res => {
-       this.navCtrl.setRoot(Fridge)
+       this.navCtrl.setRoot(Fridge);
+       this.firebaseService.createFilter();
        console.log(res);
        let toast = this.toastCtrl.create({
          message: 'Your account has been created and you have been logged in',

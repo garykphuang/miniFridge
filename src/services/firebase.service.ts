@@ -45,8 +45,6 @@ export class FirebaseService {
     updateFridgeItem(itemKey, value){
       return new Promise<any>((resolve, reject) => {
         let currentUser = firebase.auth().currentUser;
-        console.log(itemKey);
-        console.log(value);
         this.afs.collection('people').doc(currentUser.uid).collection('fridgeItems').doc(itemKey).set(value)
         .then(
           res => resolve(res),
@@ -139,6 +137,42 @@ export class FirebaseService {
           quantity: value.quantity,
           unit: value.unit
         })
+        .then(
+          res => resolve(res),
+          err => reject(err)
+        )
+      })
+    }
+
+
+    createFilter(){
+      return new Promise<any>((resolve, reject) => {
+        let currentUser = firebase.auth().currentUser;
+      this.afs.collection('people').doc(currentUser.uid).collection('filter').add({
+          fridgeFilter: "name",
+          shoppingListFilter: "name"
+        })
+        .then(
+          res => resolve(res),
+          err => reject(err)
+        )
+      })
+    }
+
+    getFilter(){
+      return new Promise<any>((resolve, reject) => {
+        let currentUser = firebase.auth().currentUser;
+      this.snapshotChangesSubscription = this.afs.collection('people').doc(currentUser.uid).collection('filter').snapshotChanges()
+        .subscribe(snapshots => {
+          resolve(snapshots);
+        })
+      });
+    }
+
+    updateFilter(itemKey, value){
+      return new Promise<any>((resolve, reject) => {
+        let currentUser = firebase.auth().currentUser;
+        this.afs.collection('people').doc(currentUser.uid).collection('filter').doc(itemKey).set(value)
         .then(
           res => resolve(res),
           err => reject(err)

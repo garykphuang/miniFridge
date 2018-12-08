@@ -28,6 +28,7 @@ export class Fridge {
    items: any
    yesterday: any
    tomorrow: any
+   filters: any
    filterRadioOpen: any
    filterRadioResult: any
 
@@ -35,11 +36,25 @@ export class Fridge {
 		 this.getData();
 	 }
 
+   getFilter(){
+     this.firebaseService.getFilter()
+     .then(filter => {
+       this.filters = filter;
+       for (let filter of this.filters){
+         filter.fridgeFilter = filter.payload.doc.data().fridgeFilter;
+         filter.shoppingListFilter = filter.payload.doc.data().shoppingListFilter
+       }
+       console.log(this.filters[0].fridgeFilter);
+
+     })
+   }
+
 // call color-coding function in here
 	 getData(){
 		 this.firebaseService.getFridgeItems()
 		 .then(fridgeItems => {
 			 this.items = fridgeItems;
+       console.log(this.items);
        this.yesterday = moment(moment()).subtract(1, 'days');
        this.tomorrow = moment(moment()).add(1, 'days');
        for (let item of this.items){
@@ -49,7 +64,18 @@ export class Fridge {
          item.daysUntil = this.checkExpiration(item.expiration);
          item.color = this.colorCode(item);
        }
-       this.items.sort(this.sortName);
+       this.firebaseService.getFilter()
+       .then(filter => {
+         this.filters = filter;
+         for (let filter of this.filters){
+           filter.fridgeFilter = filter.payload.doc.data().fridgeFilter;
+           filter.shoppingListFilter = filter.payload.doc.data().shoppingListFilter
+         }
+         let fridgeFilter = this.filters[1].fridgeFilter;
+         console.log(fridgeFilter)
+         this.items.sort(this.sortItems(fridgeFilter));
+       })
+
 		 })
 	 }
 
