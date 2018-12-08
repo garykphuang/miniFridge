@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content padding>
-  <form class="new-user-form" [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)">
+  <form class="new-user-form" [formGroup]="validations_form">
     <ion-item>
       <ion-label floating color="shopping">Item</ion-label>
       <ion-input type="text" formControlName="item" class="form-control" required></ion-input>
@@ -39,10 +39,9 @@
         <ion-option>Other</ion-option>
       </ion-select>
     </ion-item>
-    <button class="form-action-button" ion-button block color ="add" type="submit" [disabled]="!validations_form.valid">Update</button>
-    <button class="form-action-button" ion-button block color ="add2" type="submit">Move To Fridge</button>
-    <button class="form-action-button" ion-button block color ="delete" type="submit">Delete</button>
+    <button class="form-action-button" ion-button block color ="add" type="submit" [disabled]="!validations_form.valid" (click)="onSubmit(validations_form.value)">Update</button>
+    <button ion-button block color ="add2" (click)="move()">Move To Fridge</button>
+    <button ion-button block color ="delete" (click)="delete()">Delete</button>
   </form>
-  <!-- <button class="form-action-button" ion-button block color="delete" (click)="delete()">Delete</button> -->
 
 </ion-content>

@@ -130,6 +130,22 @@ export class FirebaseService {
       })
     }
 
+    moveToShoppingList(itemKey, value){
+      this.deleteFridgeItem(itemKey);
+      return new Promise<any>((resolve, reject) => {
+        let currentUser = firebase.auth().currentUser;
+      this.afs.collection('people').doc(currentUser.uid).collection('shoppingListItems').add({
+          item: value.item,
+          quantity: value.quantity,
+          unit: value.unit
+        })
+        .then(
+          res => resolve(res),
+          err => reject(err)
+        )
+      })
+    }
+
     unsubscribeOnLogOut(){
       //remember to unsubscribe from the snapshotChanges
       // debugger;
