@@ -32,6 +32,7 @@ export class Fridge {
    filterRadioOpen: any
    filterRadioResult: any
 
+
 	 ionViewWillEnter(){
 		 this.getData();
 	 }
@@ -41,11 +42,10 @@ export class Fridge {
      .then(filter => {
        this.filters = filter;
        for (let filter of this.filters){
+         filter.id = filter.payload.doc.id;
          filter.fridgeFilter = filter.payload.doc.data().fridgeFilter;
-         filter.shoppingListFilter = filter.payload.doc.data().shoppingListFilter
+         filter.shoppingListFilter = filter.payload.doc.data().shoppingListFilter;
        }
-       console.log(this.filters[0].fridgeFilter);
-
      })
    }
 
@@ -68,11 +68,12 @@ export class Fridge {
        .then(filter => {
          this.filters = filter;
          for (let filter of this.filters){
+           filter.id = filter.payload.doc.id
            filter.fridgeFilter = filter.payload.doc.data().fridgeFilter;
            filter.shoppingListFilter = filter.payload.doc.data().shoppingListFilter
          }
-         let fridgeFilter = this.filters[1].fridgeFilter;
-         console.log(fridgeFilter)
+         let fridgeFilter = this.filters[0].fridgeFilter;
+         console.log(this.filters[0].id);
          this.items.sort(this.sortItems(fridgeFilter));
        })
 
@@ -149,6 +150,7 @@ export class Fridge {
           handler: data => {
             this.filterRadioOpen = false;
             this.filterRadioResult = this.items.sort(this.sortItems(data));
+            // this.firebaseService.updateFilter(, data);
           }
         }
       ]
