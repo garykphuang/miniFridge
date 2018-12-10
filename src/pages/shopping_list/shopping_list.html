@@ -27,12 +27,12 @@
         </ion-item>
 
         <ion-item-options side="left">
-          <button ion-button color="info" (click)="viewDetails(item.payload.doc.id,item.payload.doc.data())"> Update </button>
+          <button ion-button color="info" (click)="viewDetails(item.payload.doc.id,item.payload.doc.data())">Update</button>
         </ion-item-options>
 
         <ion-item-options side="right">
-          <button ion-button color="add2" (click)="move(item.payload.doc.id,item.payload.doc.data())"> Move to Fridge </button>
-          <button ion-button color="delete" (click)="delete(item.payload.doc.id)"> Remove </button>
+          <button ion-button color="add2" (click)="move(item.payload.doc.id,item.payload.doc.data())">Move to Fridge</button>
+          <button ion-button color="delete" (click)="delete(item.payload.doc.id)">Remove</button>
         </ion-item-options>
       </ion-item-sliding>
     </ion-list>

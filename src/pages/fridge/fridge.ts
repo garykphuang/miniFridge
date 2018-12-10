@@ -273,5 +273,36 @@ export class Fridge {
   alert.present();
 }
 
+move(id, data) {
+   let confirm = this.alertCtrl.create({
+     title: 'Confirm',
+     message: 'Do you want to move this item to the shopping list?',
+     buttons: [
+       {
+         text: 'No',
+         handler: () => {}
+       },
+       {
+         text: 'Yes',
+         handler: () => {
+           this.firebaseService.moveToShoppingList(id, data)
+           .then(
+             res => {
+               let toast = this.toastCtrl.create({
+                 message: 'Item was moved successfully',
+                 duration: 3000
+               });
+               this.ionViewWillEnter();
+               toast.present();
+             },
+             err => console.log(err)
+           )
+         }
+       }
+     ]
+   });
+   confirm.present();
+ }
+
 
 }

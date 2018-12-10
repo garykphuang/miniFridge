@@ -65,4 +65,34 @@ export class FridgeDetails {
     })
   }
 
+  delete() {
+    this.firebaseService.deleteFridgeItem(this.id)
+      .then(
+      res => {
+        let toast = this.toastCtrl.create({
+          message: 'Item was deleted successfully',
+          duration: 3000
+        });
+        toast.present();
+        this.viewCtrl.dismiss()
+      },
+      err => console.log(err)
+    )
+  }
+
+  move() {
+    this.firebaseService.moveToShoppingList(this.id, this.item)
+      .then(
+      res => {
+        let toast = this.toastCtrl.create({
+          message: 'Item was moved successfully',
+          duration: 3000
+        });
+        this.viewCtrl.dismiss()
+        toast.present();
+      },
+      err => console.log(err)
+    )
+  }
+
 }
