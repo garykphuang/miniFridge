@@ -37,18 +37,6 @@ export class Fridge {
 		 this.getData();
 	 }
 
-   getFilter(){
-     this.firebaseService.getFilter()
-     .then(filter => {
-       this.filters = filter;
-       for (let filter of this.filters){
-         filter.id = filter.payload.doc.id;
-         filter.fridgeFilter = filter.payload.doc.data().fridgeFilter;
-         filter.shoppingListFilter = filter.payload.doc.data().shoppingListFilter;
-       }
-     })
-   }
-
 // call color-coding function in here
 	 getData(){
 		 this.firebaseService.getFridgeItems()
@@ -73,7 +61,6 @@ export class Fridge {
            filter.shoppingListFilter = filter.payload.doc.data().shoppingListFilter
          }
          let fridgeFilter = this.filters[0].fridgeFilter;
-         console.log(this.filters[0].id);
          this.items.sort(this.sortItems(fridgeFilter));
        })
 
@@ -150,13 +137,45 @@ export class Fridge {
           handler: data => {
             this.filterRadioOpen = false;
             this.filterRadioResult = this.items.sort(this.sortItems(data));
-            // this.firebaseService.updateFilter(, data);
+            this.updateFridgeFilter(data);
+
           }
         }
       ]
     });
     alert.present()
   }
+
+  getFilter(){
+    let filterTest = this.firebaseService.getFilter();
+    console.log(filterTest);
+    this.firebaseService.getFilter()
+    .then(filter => {
+      this.filters = filter;
+      for (let filter of this.filters){
+        filter.id = filter.payload.doc.id;
+        filter.fridgeFilter = filter.payload.doc.data().fridgeFilter;
+        filter.shoppingListFilter = filter.payload.doc.data().shoppingListFilter;
+      }
+    })
+  }
+
+   updateFridgeFilter(newFilter){
+     this.firebaseService.getFilter()
+     .then(filter => {
+       this.filters = filter;
+       for (let filter of this.filters){
+         filter.id = filter.payload.doc.id;
+         filter.fridgeFilter = newFilter;
+         filter.shoppingListFilter = filter.payload.doc.data().shoppingListFilter;
+       }
+       let data = {
+         fridgeFilter: newFilter,
+         shoppingListFilter: this.filters[0].shoppingListFilter
+       }
+       this.firebaseService.updateFilter(this.filters[0].id, data)
+     })
+   }
 
    checkExpiration(expirationDate){
      let daysUntilExpiration = "";
@@ -205,7 +224,7 @@ export class Fridge {
      let expD = thing.payload.doc.data().expiration;
      let exp = moment(expD).diff(moment(), 'days');
      // let exp = this.daysUntil;
-     if (exp > 4) {
+     if (exp >= 4) {
        return "good";
      } else if (exp < 4 && exp >= 0) {
        return "expiring";
