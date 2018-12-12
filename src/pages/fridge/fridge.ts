@@ -42,7 +42,6 @@ export class Fridge {
 		 this.firebaseService.getFridgeItems()
 		 .then(fridgeItems => {
 			 this.items = fridgeItems;
-       console.log(this.items);
        this.yesterday = moment(moment()).subtract(1, 'days');
        this.tomorrow = moment(moment()).add(1, 'days');
        for (let item of this.items){
@@ -58,12 +57,10 @@ export class Fridge {
          for (let filter of this.filters){
            filter.id = filter.payload.doc.id
            filter.fridgeFilter = filter.payload.doc.data().fridgeFilter;
-           filter.shoppingListFilter = filter.payload.doc.data().shoppingListFilter
          }
          let fridgeFilter = this.filters[0].fridgeFilter;
          this.items.sort(this.sortItems(fridgeFilter));
        })
-
 		 })
 	 }
 
@@ -138,7 +135,6 @@ export class Fridge {
             this.filterRadioOpen = false;
             this.filterRadioResult = this.items.sort(this.sortItems(data));
             this.updateFridgeFilter(data);
-
           }
         }
       ]
@@ -166,7 +162,6 @@ export class Fridge {
        this.filters = filter;
        for (let filter of this.filters){
          filter.id = filter.payload.doc.id;
-         filter.fridgeFilter = newFilter;
          filter.shoppingListFilter = filter.payload.doc.data().shoppingListFilter;
        }
        let data = {
