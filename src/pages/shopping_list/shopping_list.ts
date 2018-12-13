@@ -23,6 +23,7 @@ export class ShoppingList {
 						 	 public toastCtrl: ToastController) {}
 
 	 items: any
+	 filters: any
 	 sortRadioOpen: any
 	 sortRadioResult: any
 
@@ -39,7 +40,16 @@ export class ShoppingList {
 				 item.name = item.payload.doc.data().item;
 				 item.category = item.payload.doc.data().category;
 			 }
-			 this.items.sort(this.sortName);
+			 this.firebaseService.getFilter()
+			 .then(filter => {
+				 this.filters = filter;
+				 for (let filter of this.filters){
+					 filter.id = filter.payload.doc.id
+					 filter.shoppingListFilter = filter.payload.doc.data().shoppingListFilter
+				 }
+				 let shoppingListFilter = this.filters[0].shoppingListFilter;
+				 this.items.sort(this.sortItems(shoppingListFilter));
+			 })
 		 })
 	 }
 
@@ -176,6 +186,7 @@ export class ShoppingList {
            handler: data => {
              this.sortRadioOpen = false;
              this.sortRadioResult = this.items.sort(this.sortItems(data));
+						 this.updateShoppingListFilter(data);
            }
          }
        ]
@@ -183,6 +194,21 @@ export class ShoppingList {
      alert.present()
    }
 
+	 updateShoppingListFilter(newFilter){
+     this.firebaseService.getFilter()
+     .then(filter => {
+       this.filters = filter;
+       for (let filter of this.filters){
+         filter.id = filter.payload.doc.id;
+         filter.fridgeFilter = filter.payload.doc.data().fridgeFilter;
+       }
+       let data = {
+         fridgeFilter: this.filters[0].fridgeFilter,
+         shoppingListFilter: newFilter
+       }
+       this.firebaseService.updateFilter(this.filters[0].id, data)
+     })
+   }
 
 
 }
