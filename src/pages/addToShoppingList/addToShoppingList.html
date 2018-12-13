@@ -9,7 +9,7 @@
 <ion-content padding>
   <form class="new-user-form" [formGroup]="simple_form" (ngSubmit)="onSubmit(simple_form.value)">
     <ion-item>
-      <ion-label floating color="shopping">Item*</ion-label>
+      <ion-label floating color="shopping">Item (required)</ion-label>
       <ion-input type="text" formControlName="item" class="form-control" required></ion-input>
     </ion-item>
     <ion-grid>
