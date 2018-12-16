@@ -315,6 +315,8 @@ export class Fridge {
   // the page displays the correct data and creates a message confirming the move
   // from fridge to shopping list.
   move(id, data) {
+    console.log(id);
+    console.log(data);
     let confirm = this.alertCtrl.create({
       title: 'Confirm',
       message: 'Do you want to move this item to the shopping list?',
