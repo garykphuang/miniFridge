@@ -12,41 +12,14 @@ import { AuthService } from '../services/auth.service';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any;
+  rootPage:any = LoginPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public authService: AuthService) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
-      if (this.authService.loggedIn()) {
-        this.rootPage = Fridge;
-      } else {
-        this.rootPage = LoginPage;
-      }
       splashScreen.hide();
     });
   }
-// }
-
-// initializeApp() {
-//   this.platform.ready().then(() => {
-//     this.statusBar.styleDefault();
-//   });
-
-//   this.auth.afAuth.authState
-//     .subscribe(
-//       user => {
-//         if (user) {
-//           this.rootPage = Fridge;
-//         } // else {
-//           // this.rootPage = login;
-//         // }
-//       },
-//
-//       () => {
-//         this.rootPage = LoginPage;
-//       }
-//     );
-// }
 }

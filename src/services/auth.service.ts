@@ -51,16 +51,6 @@ export class AuthService {
     })
   }
 
-  loggedIn() {
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-        return true
-      } else {
-        return false
-      }
-    });
-  }
-
   resetPassword(value){
     return firebase.auth().sendPasswordResetEmail(value.email);
   }
