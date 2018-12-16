@@ -6,6 +6,8 @@ import { AddToFridge } from '../addToFridge/addToFridge';
 import { ShoppingList } from '../shopping_list/shopping_list';
 import { LoginPage } from '../login/login';
 
+import * as firebase from 'firebase/app';
+
 import { FirebaseService } from '../../services/firebase.service';
 
 import moment from 'moment';
@@ -18,6 +20,8 @@ export interface Config {
   templateUrl: 'fridge.html',
 })
 
+// Code for this page was adapted from an Ionic Themes Tutorial
+// https://ionicthemes.com/tutorials/about/building-a-ionic-firebase-app-step-by-step
 export class Fridge {
 
    constructor(public navCtrl 	: NavController,
@@ -32,9 +36,10 @@ export class Fridge {
    filterRadioOpen: any
    filterRadioResult: any
 
-
+   //
 	 ionViewWillEnter(){
 		 this.getData();
+     console.log(firebase.auth().currentUser)
 	 }
 
 // call color-coding function in here
