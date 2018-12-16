@@ -7,6 +7,9 @@ import { FirebaseService } from '../../services/firebase.service';
   selector: 'page-addToFridge',
   templateUrl: 'addToFridge.html'
 })
+
+// Code for this page was adapted from an Ionic Themes Tutorial
+// https://ionicthemes.com/tutorials/about/building-a-ionic-firebase-app-step-by-step
 export class AddToFridge {
 
   // Instantiating variable simple_form we will use to create a form later with
