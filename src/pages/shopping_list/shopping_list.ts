@@ -15,6 +15,11 @@ export interface Config {
   templateUrl: 'shopping_list.html'
 })
 
+// This page displays the list of items in the shopping list and their associated
+// details.
+//
+// Code for this page was adapted from an Ionic Themes Tutorial
+// https://ionicthemes.com/tutorials/about/building-a-ionic-firebase-app-step-by-step
 export class ShoppingList {
 
 	 constructor(public navCtrl 	: NavController,
@@ -30,7 +35,6 @@ export class ShoppingList {
 	 ionViewWillEnter(){
 		 this.getData();
 	 }
-
 
 	 getData(){
 		 this.firebaseService.getShoppingListItems()

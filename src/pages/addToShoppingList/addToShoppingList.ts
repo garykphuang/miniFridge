@@ -8,6 +8,9 @@ import { FirebaseService } from '../../services/firebase.service';
   templateUrl: 'addToShoppingList.html'
 })
 
+// This page is a blank form that allows users to add new items to the shoppinglist
+// list
+//
 // Code for this page was adapted from an Ionic Themes Tutorial
 // https://ionicthemes.com/tutorials/about/building-a-ionic-firebase-app-step-by-step
 export class AddToShoppingList {

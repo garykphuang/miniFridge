@@ -45,7 +45,6 @@ export class Fridge {
    // by the getData() function and the .html file
 	 ionViewWillEnter(){
 		 this.getData();
-     console.log(firebase.auth().currentUser)
 	 }
 
    // The getData() function accesses firebase and runs the getFridgeItems() function.
