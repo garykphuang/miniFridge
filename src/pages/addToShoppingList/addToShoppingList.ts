@@ -9,6 +9,8 @@ import { FirebaseService } from '../../services/firebase.service';
 })
 export class AddToShoppingList {
 
+  // Instantiating variable simple_form we will use to create a form later with
+  // formBuilder
   simple_form: FormGroup;
 
   constructor(
@@ -20,11 +22,14 @@ export class AddToShoppingList {
 
   }
 
+  // This function runs when the page has loaded in order to run the builder function
+  // that creates the form to enter the values.
   ionViewWillLoad(){
-    this.getData();
+    this.shoppingAddingBuilder();
   }
 
-  getData(){
+  // This function builds the page to allow values to be entered.
+  shoppingAddingBuilder(){
     this.simple_form = this.formBuilder.group({
       item: new FormControl('', Validators.required),
       quantity: new FormControl(''),
@@ -33,6 +38,10 @@ export class AddToShoppingList {
     });
   }
 
+  // This onSubmit function works with an add button which when clicked takes the values
+  // entered by the user into the input lines and creates a shoppingListItem, placing it
+  // into firebase database. The function also produces a message telling the user
+  // the item was created successfully.
   onSubmit(value){
     let data = {
       item: value.item,
@@ -54,6 +63,8 @@ export class AddToShoppingList {
     })
   }
 
+  // This function simply resets the data stored after the item was created into
+  // the shopping_list in firebase so new values can be entered.
   resetFields(){
     this.simple_form.reset()
   }
