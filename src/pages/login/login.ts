@@ -14,11 +14,15 @@ import { AuthService } from '../../services/auth.service';
   selector: 'page-login',
   templateUrl: 'login.html'
 })
+
+// Code for this page was adapted from an Ionic Themes Tutorial
+// https://ionicthemes.com/tutorials/about/building-a-ionic-firebase-app-step-by-step
 export class LoginPage {
 
   validations_form: FormGroup;
   errorMessage: string = '';
 
+  // Error messages that appear when fields are not filled in correctly
   validation_messages = {
    'email': [
      { type: 'required', message: 'Email is required.' },
@@ -36,6 +40,8 @@ export class LoginPage {
     private formBuilder: FormBuilder
   ) {}
 
+  // Builds login form when page loads. The form requires an email and password
+  // with specific length and character restrictions.
   ionViewWillLoad(){
     this.validations_form = this.formBuilder.group({
       email: new FormControl('', Validators.compose([
@@ -49,6 +55,8 @@ export class LoginPage {
     });
   }
 
+  // Takes in an email and password value that it passes onto the doLogin
+  // method in the authService module.
   tryLogin(value){
     this.authService.doLogin(value)
     .then(res => {
@@ -68,10 +76,12 @@ export class LoginPage {
   //   })
   // }
 
+  // Switches page to register page
   goRegisterPage(){
     this.navCtrl.push(RegisterPage);
   }
 
+  // Switches page to reset password page
   goResetPasswordPage(){
     this.navCtrl.push(ResetPasswordPage);
   }

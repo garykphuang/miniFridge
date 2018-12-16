@@ -10,12 +10,16 @@ import { Fridge } from '../fridge/fridge';
   selector: 'page-register',
   templateUrl: 'register.html'
 })
+
+// Code for this page was adapted from an Ionic Themes Tutorial
+// https://ionicthemes.com/tutorials/about/building-a-ionic-firebase-app-step-by-step
 export class RegisterPage {
 
   validations_form: FormGroup;
   errorMessage: string = '';
   successMessage: string = '';
 
+  // Error messages that appear when fields are not filled in correctly
   validation_messages = {
    'email': [
      { type: 'required', message: 'Email is required.' },
@@ -35,6 +39,8 @@ export class RegisterPage {
     private formBuilder: FormBuilder
   ) {}
 
+  // Builds registration form when page loads. The form requires an email and password
+  // with specific length and character restrictions.
   ionViewWillLoad(){
     this.validations_form = this.formBuilder.group({
       email: new FormControl('', Validators.compose([
@@ -48,6 +54,9 @@ export class RegisterPage {
     });
   }
 
+  // Takes in an email and password value that it passes onto the doRegister
+  // method in the authService module. Also logs user in automatically if
+  // registration is successful
   tryRegister(value){
     this.authService.doRegister(value)
      .then(res => {
@@ -67,6 +76,7 @@ export class RegisterPage {
      })
   }
 
+  // Switches page to login page
   goLoginPage(){
     this.navCtrl.pop();
   }
