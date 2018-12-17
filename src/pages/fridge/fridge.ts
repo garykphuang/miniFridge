@@ -249,7 +249,7 @@ export class Fridge {
 
  // This function when prompted produces an alert which asks the user if they want to
  // delete an item. If they click no, nothing happens. If they click yes, the deleteFridgeItems()
- // function deleted that item from firebase using its id and then produces a message telling the user
+ // function deletes that item from firebase using its id and then produces a message telling the user
  // that the item was deleted successfully.
    delete(id) {
      let confirm = this.alertCtrl.create({
