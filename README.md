@@ -52,10 +52,11 @@ which will run your app and deploy it on your device in debug mode.
 
 ## Built With
 
-* [Ionic](https://ionicframework.com/) - Framework
-* [Firebase](https://firebase.google.com/) - Database
+* [Ionic](https://ionicframework.com/) - Hybrid Framework
+* [Firebase](https://firebase.google.com/) - Database and Authentication
+* [Moment.js](https://momentjs.com/) - Time and Date Handling
 * [rxjs](http://reactivex.io/) - Asynchronous calls
-* [Moment.js](https://momentjs.com/) - Date handling
+
 
 ## Creators
 
