@@ -9,6 +9,7 @@ import { FirebaseService } from '../../services/firebase.service';
 })
 export class ShoppingListDetails {
 
+  // Instantiating variables that are used below
   validations_form: FormGroup;
   item: any;
   id: any;
@@ -22,10 +23,15 @@ export class ShoppingListDetails {
   ) {
   }
 
+  // This function runs when the page has loaded in order to run the getData function
+  // that will get the data from firebase and display it in the format set forth
+  // by the formBuilder.
   ionViewWillLoad(){
     this.getData()
   }
 
+  // The function gets the data and the id of an item and displays that information
+  // according to the template set forth by the validation_form FormBuilder.
   getData(){
     this.item = this.navParams.get('data');
     this.id = this.navParams.get('id')
@@ -37,10 +43,15 @@ export class ShoppingListDetails {
     });
   }
 
+  // The dismiss function gets rid of the fridgeDetails page.
   dismiss() {
    this.viewCtrl.dismiss();
   }
 
+  // This function takes in a value and creates a dictionary that stores
+  // the data entered for an item. It then updates that data using the updateShoppingListItem()
+  // function and the id and the data entered in firebase. It then creates a message
+  // confirming the update of that item data and then dismisses the fridgeDetails page.
   onSubmit(value){
     let data = {
       item: value.item,
@@ -62,6 +73,9 @@ export class ShoppingListDetails {
     })
   }
 
+  // This function when prompted runs the deleteShoppingListItems() function that deletes
+  // that item from firebase using its id and then produces a message telling the user
+  // that the item was deleted successfully.
   delete() {
     this.firebaseService.deleteShoppingListItem(this.id)
       .then(
@@ -77,6 +91,10 @@ export class ShoppingListDetails {
     )
   }
 
+  // This function if uses the moveToFridge() function and uses the id and
+  // data of an item to move it to the shopping list in firebase. Then the function
+  // dismisses the fshoppingListDetails page and creates a message confirming the move
+  // from shopping list to frigde.
   move() {
     this.firebaseService.moveToFridge(this.id, this.item)
       .then(

@@ -27,15 +27,26 @@ export class ShoppingList {
 							 private alertCtrl: AlertController,
 						 	 public toastCtrl: ToastController) {}
 
+   // Instantiating variables that we will use below
 	 items: any
 	 filters: any
 	 sortRadioOpen: any
 	 sortRadioResult: any
 
+	 // This function runs when the page has loaded in order to run the getData function
+   // that will get the data from firebase and display it in the format set forth
+   // by the getData() function and the .html file
 	 ionViewWillEnter(){
 		 this.getData();
 	 }
 
+<<<<<<< HEAD
+	 // The getData() function accesses firebase and runs the getShoppingListItems() function.
+   // in order to get the dat from firebase for items in the shopping list. It also runs
+	 // the getFilter() function which gets the filter stored in firebase so when the
+	 // fridgeItems load on the page, they are sorted by the previously set choice by the user.
+=======
+>>>>>>> 955256355d1847b0c315318ab0cab68f9e726ca7
 	 getData(){
 		 this.firebaseService.getShoppingListItems()
 		 .then(shoppingListItems => {
@@ -57,6 +68,7 @@ export class ShoppingList {
 		 })
 	 }
 
+  // This function takes in two items and sorts them alphabetically by their categories
 	 sortCategory(a, b) {
 		 if (a.category > b.category) {
 			 return 1;
@@ -67,6 +79,7 @@ export class ShoppingList {
 		 }
 	 }
 
+  // This function takes in two items and sorts them alphabetically by their names
 	 sortName(a, b) {
 		 if (a.name > b.name) {
 			 return 1;
@@ -77,6 +90,8 @@ export class ShoppingList {
 		 }
 	 }
 
+	 // This function takes in a value and according to that value, sets the filter
+	 // to that of the chosen value.
 	 sortItems(value) {
 		 if (value === 'name'){
 			 return this.sortName;
@@ -99,6 +114,10 @@ export class ShoppingList {
 		 })
 	 }
 
+	 // This function when prompted produces an alert which asks the user if they want to
+	 // delete an item. If they click no, nothing happens. If they click yes, the deleteShoppingListItems()
+	 // function deletes that item from firebase using its id and then produces a message telling the user
+	 // that the item was deleted successfully.
 	 delete(id) {
      let confirm = this.alertCtrl.create({
        title: 'Confirm',
@@ -130,6 +149,12 @@ export class ShoppingList {
      confirm.present();
    }
 
+	 // This function if prompted creates an alert that asks the user if they want
+   // to move an item from the shopping list to the fridge. If they say yes, the
+   // moveToFridge() function uses the id and data of that item to move it
+   // to the shopping list in firebase. Then the function reloads the page so that
+   // the page displays the correct data and creates a message confirming the move
+   // from shopping list to fridge.
 	 move(id, data) {
 			let confirm = this.alertCtrl.create({
 				title: 'Confirm',
@@ -165,6 +190,10 @@ export class ShoppingList {
 		 this.navCtrl.push(AddToShoppingList)
 	 }
 
+	 // This function works with a button. When prompted, it creates a list where the user can
+   // choose two of the filter options and according to that chosen option, it first sorts the
+   // items in the shopping list and then uses the updateShoppingListFilter() function to
+	 // update the value of the filter in firebase.
 	 shoppingListFilter(){
      let alert = this.alertCtrl.create({
        title: 'Sort By',
