@@ -6,8 +6,6 @@ import { AddToFridge } from '../addToFridge/addToFridge';
 import { ShoppingList } from '../shopping_list/shopping_list';
 import { LoginPage } from '../login/login';
 
-import * as firebase from 'firebase/app';
-
 import { FirebaseService } from '../../services/firebase.service';
 
 import moment from 'moment';
