@@ -15,6 +15,11 @@ export interface Config {
   templateUrl: 'shopping_list.html'
 })
 
+// This page displays the list of items in the shopping list and their associated
+// details.
+//
+// Code for this page was adapted from an Ionic Themes Tutorial
+// https://ionicthemes.com/tutorials/about/building-a-ionic-firebase-app-step-by-step
 export class ShoppingList {
 
 	 constructor(public navCtrl 	: NavController,
@@ -35,10 +40,13 @@ export class ShoppingList {
 		 this.getData();
 	 }
 
+<<<<<<< HEAD
 	 // The getData() function accesses firebase and runs the getShoppingListItems() function.
    // in order to get the dat from firebase for items in the shopping list. It also runs
 	 // the getFilter() function which gets the filter stored in firebase so when the
 	 // fridgeItems load on the page, they are sorted by the previously set choice by the user.
+=======
+>>>>>>> 955256355d1847b0c315318ab0cab68f9e726ca7
 	 getData(){
 		 this.firebaseService.getShoppingListItems()
 		 .then(shoppingListItems => {

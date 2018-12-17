@@ -15,6 +15,9 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: 'login.html'
 })
 
+// This page is a form that allows users to enter their email and password to
+// login.
+//
 // Code for this page was adapted from an Ionic Themes Tutorial
 // https://ionicthemes.com/tutorials/about/building-a-ionic-firebase-app-step-by-step
 export class LoginPage {
@@ -65,16 +68,6 @@ export class LoginPage {
       this.errorMessage = err.message;
     })
   }
-
-  // firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL) {
-  //   .then(function() {
-  //     return firebase.auth().signInWithEmailAndPassword(email, password);
-  //   })
-  //   .catch(function(error) {
-  //     var errorCode = error.code;
-  //     var errorMessage = error.message;
-  //   })
-  // }
 
   // Switches page to register page
   goRegisterPage(){

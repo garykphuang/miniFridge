@@ -6,8 +6,6 @@ import { AddToFridge } from '../addToFridge/addToFridge';
 import { ShoppingList } from '../shopping_list/shopping_list';
 import { LoginPage } from '../login/login';
 
-import * as firebase from 'firebase/app';
-
 import { FirebaseService } from '../../services/firebase.service';
 
 import moment from 'moment';
@@ -20,6 +18,9 @@ export interface Config {
   templateUrl: 'fridge.html',
 })
 
+// This page displays the list of items in the fridge and their associated
+// details.
+//
 // Code for this page was adapted from an Ionic Themes Tutorial
 // https://ionicthemes.com/tutorials/about/building-a-ionic-firebase-app-step-by-step
 export class Fridge {
@@ -42,7 +43,6 @@ export class Fridge {
    // by the getData() function and the .html file
 	 ionViewWillEnter(){
 		 this.getData();
-     console.log(firebase.auth().currentUser)
 	 }
 
    // The getData() function accesses firebase and runs the getFridgeItems() function.
@@ -124,7 +124,7 @@ export class Fridge {
 
   // This function works with a button. When prompted, it creates a list where the user can
   // choose three of the filter options and according to that chosen option, it first sorts the
-  // items in the fridge and they uses the updateFridgeFilter() function to update the value
+  // items in the fridge and then uses the updateFridgeFilter() function to update the value
   // of the filter in firebase.
   fridgeFilter(){
     let alert = this.alertCtrl.create({
@@ -164,6 +164,7 @@ export class Fridge {
     alert.present()
   }
 
+   // Updates the value of the filter in firebase
    updateFridgeFilter(newFilter){
      this.firebaseService.getFilter()
      .then(filter => {
@@ -180,7 +181,9 @@ export class Fridge {
      })
    }
 
-
+   // Uses Moment.js to check the expiration date of each item in the list.
+   // Sets the daysUntilExpiration variable to be a string that reflects how
+   // soon the item is expiring. This string is displayed in the fridge list.
    checkExpiration(expirationDate){
      let daysUntilExpiration = "";
      if (moment(expirationDate).isAfter(moment(), 'day')){
@@ -200,8 +203,10 @@ export class Fridge {
      return daysUntilExpiration;
    }
 
+   // Switches the page to the item's detail page. viewDetails also passes
+   // the data of the item to the detail page so that the item information can
+   // be displayed and edited accordingly.
 	 viewDetails(id, item){
-		 // debugger
 		 let data = {
 			 item: item.item,
        quantity: item.quantity,
@@ -315,8 +320,6 @@ export class Fridge {
   // the page displays the correct data and creates a message confirming the move
   // from fridge to shopping list.
   move(id, data) {
-    console.log(id);
-    console.log(data);
     let confirm = this.alertCtrl.create({
       title: 'Confirm',
       message: 'Do you want to move this item to the shopping list?',

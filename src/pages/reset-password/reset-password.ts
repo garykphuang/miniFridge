@@ -8,6 +8,8 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: "reset-password.html"
 })
 
+// This page handles password resetting of users.
+//
 // Code for this page was adapted from a tutorial by Jave Bratt
 // https://javebratt.com/ionic-firebase-tutorial-auth/
 export class ResetPasswordPage {

@@ -8,7 +8,10 @@ import { FirebaseService } from '../../services/firebase.service';
   templateUrl: 'fridgeDetails.html'
 })
 
-
+// This page displays the details of individual items in the fridge.
+//
+// Code for this page was adapted from an Ionic Themes Tutorial
+// https://ionicthemes.com/tutorials/about/building-a-ionic-firebase-app-step-by-step
 export class FridgeDetails {
 
   // Instantiating variables that are used below

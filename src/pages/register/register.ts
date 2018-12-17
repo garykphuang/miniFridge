@@ -11,6 +11,8 @@ import { Fridge } from '../fridge/fridge';
   templateUrl: 'register.html'
 })
 
+// This page handles registration of new users
+//
 // Code for this page was adapted from an Ionic Themes Tutorial
 // https://ionicthemes.com/tutorials/about/building-a-ionic-firebase-app-step-by-step
 export class RegisterPage {
@@ -56,7 +58,8 @@ export class RegisterPage {
 
   // Takes in an email and password value that it passes onto the doRegister
   // method in the authService module. Also logs user in automatically if
-  // registration is successful
+  // registration is successful and creates a default filter that sorts items
+  // alphabetically by name.
   tryRegister(value){
     this.authService.doRegister(value)
      .then(res => {
