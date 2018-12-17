@@ -63,7 +63,6 @@ export class RegisterPage {
   tryRegister(value){
     this.authService.doRegister(value)
      .then(res => {
-       this.navCtrl.setRoot(Fridge);
        this.firebaseService.createFilter();
        console.log(res);
        let toast = this.toastCtrl.create({
@@ -72,6 +71,7 @@ export class RegisterPage {
        });
      toast.present();
      this.authService.doLogin(value)
+     this.navCtrl.setRoot(Fridge);
      }, err => {
        console.log(err);
        this.errorMessage = err.message;
