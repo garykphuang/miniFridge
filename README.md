@@ -42,9 +42,9 @@ When it finishes building, your browser should open automatically with the app. 
 ### Deploying to a device
 First, you will need to add the desired platform to the project. You can do this by running 
 ```
-ionic cordova platform add [platform]
+ionic cordova platform add <platform>
 ``` 
-Where ```[platform]``` can be ```ios``` or ```android```. 
+Where ```<platform>``` can be ```ios``` or ```android```. 
 
 For android, connect your device by USB to your computer. Ensure developer settings (USB debugging, specifically) is on on your device. Run
 ```
