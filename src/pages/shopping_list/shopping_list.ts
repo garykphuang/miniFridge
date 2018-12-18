@@ -40,7 +40,6 @@ export class ShoppingList {
 		 this.getData();
 	 }
 
-
 	 // The getData() function accesses firebase and runs the getShoppingListItems() function.
    // in order to get the dat from firebase for items in the shopping list. It also runs
 	 // the getFilter() function which gets the filter stored in firebase so when the
