@@ -40,13 +40,11 @@ export class ShoppingList {
 		 this.getData();
 	 }
 
-<<<<<<< HEAD
+
 	 // The getData() function accesses firebase and runs the getShoppingListItems() function.
    // in order to get the dat from firebase for items in the shopping list. It also runs
 	 // the getFilter() function which gets the filter stored in firebase so when the
 	 // fridgeItems load on the page, they are sorted by the previously set choice by the user.
-=======
->>>>>>> 955256355d1847b0c315318ab0cab68f9e726ca7
 	 getData(){
 		 this.firebaseService.getShoppingListItems()
 		 .then(shoppingListItems => {
@@ -242,6 +240,4 @@ export class ShoppingList {
        this.firebaseService.updateFilter(this.filters[0].id, data)
      })
    }
-
-
 }
