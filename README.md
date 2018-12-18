@@ -44,11 +44,20 @@ First, you will need to add the desired platform to the project. You can do this
 ```
 ionic cordova platform add [platform]
 ``` 
-Where ```[platform]``` can be ```ios``` (primary platform), ```android``` or ```windows```. Then run
+Where ```[platform]``` can be ```ios``` or ```android```. 
+
+For android, connect your device by USB to your computer. Ensure developer settings (USB debugging, specifically) is on on your device. Run
 ```
-ionic cordova run [platform]
+ionic cordova run android --device
 ```
-which will run your app and deploy it on your device in debug mode.
+which will run your app and deploy it on your Android device in debug mode.
+
+iOS is a bit more complex. Connect your device to your computer. Ensure developer settings (USB debugging) is on, and open the project in xcode. You'll need to sign your app using your Apple ID and enter a unique bundle identifier. From the drop down menu, select the connected device as the active scheme (near the run and terminate buttons in the top left corner). Press the run button. If an error occurs, go into settings on the device and enter Device Management to trust the developer (the Apple ID used to sign the app). This will run your app and deploy it on your Apple device in debug mode.
+
+When handling updates, removing and re-adding the platform (using
+```ionic cordova platform remove/add ios```
+) will be necessary, as xcode does not update itself automatically.
+Do not use ```ionic cordova platform update ios```. It doesn't work.
 
 ## Built With
 
